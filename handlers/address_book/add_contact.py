@@ -14,7 +14,7 @@ def input_value(value, clas):
             result = clas(result)
             return result
         except:
-            continue
+            result
 
 
 def add_contact(book):

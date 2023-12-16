@@ -5,7 +5,8 @@ class Address(Field):
     @staticmethod
     def validate(value):
         if not value:
-            raise ValueError('The adress is required')
+            print ('The adress is required')
+            raise ValueError
 
     @Field.value.setter
     def value(self, value: str):

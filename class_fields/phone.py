@@ -11,7 +11,8 @@ class Phone(Field):
         result = re.match(r'^\d{10}$', value)
 
         if result is None:
-            raise ValueError('The phone must contain 10 digits')
+            print ('The phone must contain 10 digits')
+            raise ValueError
 
 
     @Field.value.setter
