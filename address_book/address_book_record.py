@@ -33,18 +33,16 @@ class AddressBookRecord:
         return self.phones
 
     def find_phone(self, phone: str):
-        phones = list(filter(lambda item: item.value == phone, self.phones))
+        for current_phone in self.phones:
+            if current_phone.value == phone:
+                return current_phone
 
-        return phones[0] if len(phones) > 0 else None
+        return None
 
     def days_to_birthday(self):
         today = date.today()
-        closest_birthday = date(year=today.year, month=self.birthday.value.month, day=self.birthday.value.day)
-
-        if today <= closest_birthday:
-            return (closest_birthday - today).days
-
-        closest_birthday.replace(year=closest_birthday.year + 1)
+        year = today.year if today <= self.birthday.value.replace(year=today.year) else today.year + 1
+        closest_birthday = self.birthday.value.replace(year=year)
 
         return (closest_birthday - today).days
 
