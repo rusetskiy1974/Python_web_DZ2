@@ -27,11 +27,9 @@ class AddressBook(UserDict):
 
         if start_index < len(records):
             self.pagination_offset += 1
-
             return records[start_index:end_index]
 
-        iteration = StopIteration
-        raise iteration
+        raise StopIteration
 
     def add(self, record: AddressBookRecord):
         self.data[record.name.value] = record
