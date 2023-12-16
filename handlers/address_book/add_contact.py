@@ -21,10 +21,10 @@ def add_contact(book):
 
     name = input_value('name', Name)
     date = input_value('date birthday', Date )
-    phone = input_value('phone', Phone)
     mail = input_value('email', Mail)
     address = input_value('address', Address)
-    record = AddressBookRecord(name, date, phone)
+    phone = input_value('phone', Phone)
+    record = AddressBookRecord(name= name, birthday= date, mail= mail, address= address,  phones= [phone])
     book.add(record)
 
     print ('Contact added')

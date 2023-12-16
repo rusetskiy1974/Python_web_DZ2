@@ -1,20 +1,24 @@
 from class_fields.phone import Phone
 from class_fields.name import Name
 from class_fields.date import Date
+from class_fields.mail import Mail
+from class_fields.address import Address
 from datetime import date
 
 
 class AddressBookRecord:
-    def __init__(self, name: Name, birthday: Date, phones: list[Phone] = []):
+    def __init__(self, name: Name, birthday: Date, mail : Mail, address : Address, phones: list[Phone] = [] ):
         self.name = name
         self.birthday = birthday
         self.phones = phones
+        self.mail = mail
+        self.address = address
 
     def __str__(self):
-        return f"Contact name: {self.name.value}, birthday: {self.birthday}, phones: {'; '.join(p.value for p in self.phones)}"
+        return f"Contact name: {self.name.value}, birthday: {self.birthday}, email: {self.mail}, address: {self.address}, phones: {'; '.join(p.value for p in self.phones)}"
 
     def __repr__(self):
-        return f"Contact name: {self.name.value}, birthday: {self.birthday}, phones: {'; '.join(p.value for p in self.phones)}"
+        return f"Contact name: {self.name.value}, birthday: {self.birthday}, email: {self.mail}, address: {self.address}, phones: {'; '.join(p.value for p in self.phones)}"
 
     def add_phone(self, phone: Phone):
         self.phones.append(phone)
