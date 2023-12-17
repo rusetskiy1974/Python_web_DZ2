@@ -39,6 +39,7 @@ REGISTER_EXTENSIONS = {
 EXTENSIONS = set()
 UNKNOWN = set()
 
+
 def get_extension(file_name: str) -> str:
     return Path(file_name).suffix[1:].upper()
 
@@ -62,19 +63,3 @@ def scan(folder: Path) -> None:
             except KeyError:
                 UNKNOWN.add(ext)
                 OTHER.append(full_name)
-
-
-if __name__ == '__main__':
-    folder_for_scan = sys.argv[1]
-    print(f'Start in folder{folder_for_scan}')
-
-    scan(Path(folder_for_scan))
-    print(IMAGES)
-    print(VIDEO)
-    print(DOCUMENTS)
-    print(AUDIO)
-    print(OTHER)
-    print(ARCHIVES)
-
-    print(f'There are files of types {EXTENSIONS}')
-    print(f'Unknown files {UNKNOWN}')
