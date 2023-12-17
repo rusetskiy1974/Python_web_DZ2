@@ -14,8 +14,7 @@ class Date(Field):
         result = date_validation(value)
 
         if result is None:
-            print ('The date is incorrect')
-            return ValueError
+            raise ValueError('The date is incorrect')
 
 
     @Field.value.setter

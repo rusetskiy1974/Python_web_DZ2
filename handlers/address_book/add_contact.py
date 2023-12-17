@@ -6,18 +6,18 @@ from class_fields.mail import Mail
 from address_book.address_book_record import AddressBookRecord
 
 
-def input_value(value, clas):    #Функція введення та валідації даних контакту
+def input_value(value, class_field):
     while True:
-        print ('Enter', value,'>>>', end=' ' )
-        result = input()
+        result = input(f'Enter {value}: ')
         try:
-            result = clas(result)
+            result = class_field(result)
             return result
-        except:
+        except Exception as error:
+            print(error)
             continue
 
 
-def add_contact(book): # Функція формування контакту
+def add_contact(book):
 
     name = input_value('name', Name)
     date = input_value('date birthday', Date )
@@ -27,16 +27,4 @@ def add_contact(book): # Функція формування контакту
     record = AddressBookRecord(name= name, birthday= date, mail= mail, address= address,  phones= [phone])
     book.add(record)
 
-    print ('Contact added')
-
-
-
-    
-
-
-
-# add_contact()    
-        
-
-
-     
+    print(f'Contact {name.value} was added')

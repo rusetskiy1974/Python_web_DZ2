@@ -7,8 +7,7 @@ class Mail(Field):
         result = re.match(r'^((([0-9A-Za-z]{1}[-0-9A-z\.]{0,30}[0-9A-Za-z]?)|([0-9А-Яа-я]{1}[-0-9А-я\.]{0,30}[0-9А-Яа-я]?))@([-A-Za-z]{1,}\.){1,}[-A-Za-z]{2,})$', value)
 
         if result is None:
-            print ('Incorrect email adress')
-            raise ValueError
+            raise ValueError('Incorrect email address')
 
 
     @Field.value.setter
