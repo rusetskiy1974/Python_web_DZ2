@@ -13,9 +13,9 @@ from serializers.address_book.address_book_csv_serializer import AddressBookCSVS
 
 PATH = Path('databases') / Path('address_book.csv')
 ADDRESS_BOOK_FIELDS = ['name', 'birthday', 'address', 'phones', 'mail']
-storage = CSVStorage(PATH, AddressBookCSVSerializer, ADDRESS_BOOK_FIELDS)
 
-book = AddressBook(storage.get())
+address_book_storage = CSVStorage(PATH, AddressBookCSVSerializer, ADDRESS_BOOK_FIELDS)
+book = AddressBook(address_book_storage.get())
 
 
 def main():
@@ -23,7 +23,7 @@ def main():
         user_input = input('Enter command: ').casefold()
 
         if user_input == commands.ADD_CONTACT:
-            add_contact(book, storage)
+            add_contact(book, address_book_storage)
             continue
 
         if user_input == commands.REMOVE_CONTACT:
