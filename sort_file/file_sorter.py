@@ -1,12 +1,12 @@
 from pathlib import Path
 import shutil
 import sys
-
 script_directory = Path(__file__).resolve().parent
 sys.path.append(str(script_directory))
-
 import file_parser as parser
 from normalize import normalize
+
+
 
 
 class FileSorter:
@@ -62,3 +62,13 @@ class FileSorter:
 
         for folder_to_handle in parser.FOLDERS[::-1]:
             self.handle_folder(folder_to_handle)
+
+    def sort_file(self):
+        try:
+            folder_for_scan = input('Enter folder for scan: ')
+            sorter = FileSorter(Path(folder_for_scan))
+            sorter.sort_files()
+        except (FileNotFoundError, OSError) as e:
+            print(f'Error: {e}')
+
+

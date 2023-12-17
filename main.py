@@ -7,7 +7,7 @@ from handlers.address_book.edit_contact import edit_contact
 from handlers.address_book.find_contact import find_contact
 from handlers.address_book.show_birthday import show_birthday
 from address_book.address_book import AddressBook
-from sort_file.clean import FileSorter
+from handlers.sort_file.sort_file import sort_files
 
 book = AddressBook()
 
@@ -37,12 +37,7 @@ def main():
             continue
 
         if user_input == commands.SORT_FILES:
-            try:
-                folder_for_scan = input('Enter folder for scan: ')
-                sorter = FileSorter(Path(folder_for_scan))
-                sorter.sort_files()
-            except (FileNotFoundError, OSError) as e:
-                print(f'Error: {e}')
+            sort_files()
             continue
 
 

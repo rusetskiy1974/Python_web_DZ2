@@ -7,9 +7,10 @@ DOCUMENTS = []
 AUDIO = []
 OTHER = []
 ARCHIVES = []
-
-
 FOLDERS = []
+
+EXTENSIONS = set()
+UNKNOWN = set()
 
 REGISTER_EXTENSIONS = {
     'JPEG': IMAGES,
@@ -35,8 +36,6 @@ REGISTER_EXTENSIONS = {
     'ZIP': ARCHIVES,
 }
 
-EXTENSIONS = set()
-UNKNOWN = set()
 
 
 def get_extension(file_name: str) -> str:
