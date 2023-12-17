@@ -1,17 +1,18 @@
-import datetime
-
-from .storage import Storage
 from csv import DictReader, DictWriter
 from pathlib import Path
 
+from .storage import Storage
+from serializers.serializer import Serializer
+from typing import Type
+
 
 class CSVStorage(Storage):
-    def __init__(self, path: Path, serializer, fieldnames: [str]):
+    def __init__(self, path: Path, serializer: Type[Serializer], fieldnames: [str]):
         self.path = path
         self.serializer = serializer
         self.fieldnames = fieldnames
 
-    def get_data_from_storage(self):
+    def get(self):
         data = []
 
         with open(self.path, 'r', newline='') as file:
@@ -25,7 +26,7 @@ class CSVStorage(Storage):
 
         return data
 
-    def update_storage(self, records):
+    def update(self, records):
         with open(self.path, 'w', newline='') as file:
             writer = DictWriter(file, fieldnames=self.fieldnames)
 

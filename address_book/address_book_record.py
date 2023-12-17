@@ -7,7 +7,7 @@ from datetime import date
 
 
 class AddressBookRecord:
-    def __init__(self, name: Name, birthday: Date, mail : Mail, address : Address, phones: list[Phone] = [] ):
+    def __init__(self, name: Name, birthday: Date, mail: Mail, address: Address, phones: list[Phone] = [] ):
         self.name = name
         self.birthday = birthday
         self.phones = phones
