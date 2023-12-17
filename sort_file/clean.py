@@ -62,11 +62,3 @@ class FileSorter:
 
         for folder_to_handle in parser.FOLDERS[::-1]:
             self.handle_folder(folder_to_handle)
-
-
-if __name__ == '__main__':
-    if len(sys.argv) == 2:
-        folder_for_scan = Path(sys.argv[1])
-        print(f'Start in folder {folder_for_scan.resolve()}')
-        sorter = FileSorter(folder_for_scan)
-        sorter.sort_files()
