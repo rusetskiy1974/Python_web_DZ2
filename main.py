@@ -37,8 +37,12 @@ def main():
             continue
 
         if user_input == commands.SORT_FILES:
-            folder_for_scan = input('Enter folder for scan: ')
-            FileSorter(Path(folder_for_scan)).sort_files()
+            try:
+                folder_for_scan = input('Enter folder for scan: ')
+                sorter = FileSorter(Path(folder_for_scan))
+                sorter.sort_files()
+            except (FileNotFoundError, OSError) as e:
+                print(f'Error: {e}')
             continue
 
 
