@@ -30,7 +30,7 @@ def main():
             continue
 
         if user_input == commands.SHOW_BIRTHDAY:
-            show_birthday()
+            show_birthday(book)
             continue
 
 
