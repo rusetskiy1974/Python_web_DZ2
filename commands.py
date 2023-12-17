@@ -1,0 +1,5 @@
+ADD_CONTACT = 'add_contact'
+REMOVE_CONTACT = 'remove_contact'
+EDIT_CONTACT = 'edit_contact'
+FIND_CONTACT = 'find_contact'
+SHOW_BIRTHDAY = 'show_birthday'
