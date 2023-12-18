@@ -1,5 +1,3 @@
-from pathlib import Path
-
 import commands
 from handlers.address_book.add_contact import add_contact
 from handlers.address_book.remove_contact import remove_contact
@@ -8,6 +6,7 @@ from handlers.address_book.find_contact import find_contact
 from handlers.address_book.show_birthday import show_birthday
 from address_book.address_book import AddressBook
 from handlers.sort_file.sort_file import sort_files
+from handlers.do_exit import do_exit
 
 book = AddressBook()
 
@@ -39,6 +38,10 @@ def main():
         if user_input == commands.SORT_FILES:
             sort_files()
             continue
+
+        if user_input == commands.EXIT or user_input == commands.CLOSE:
+            do_exit()
+            break
 
 
 if __name__ == '__main__':
