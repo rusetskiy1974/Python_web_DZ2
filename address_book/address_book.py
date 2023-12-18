@@ -4,6 +4,7 @@ from pathlib import Path
 from storages.storage import Storage
 from storages.csv_storage import CSVStorage
 from serializers.address_book.address_book_csv_serializer import AddressBookCSVSerializer
+from datetime import date
 
 CSV_STORAGE_PATH = Path('databases', 'address_book.csv')
 FIELD_NAMES = ['name', 'birthday', 'phones']
@@ -56,6 +57,13 @@ class AddressBook(UserDict):
             lambda record: value.casefold() in record.name.value.casefold() or self.is_existing_in_phone(value, record),
             self.data.values()
         ))
+    
+    def show_birthday(self, value: int):
+        return list(filter(
+            lambda record:  AddressBookRecord.days_to_birthday(record) <= value,
+            self.data.values()
+        ))
+         
 
 
 address_book = AddressBook()
