@@ -5,6 +5,7 @@ from handlers.address_book.edit_contact import edit_contact
 from handlers.address_book.find_contact import find_contact
 from handlers.address_book.show_birthday import show_birthday
 from address_book.address_book import AddressBook
+from handlers.sort_file.sort_file import sort_files
 from handlers.do_exit import do_exit
 
 book = AddressBook()
@@ -32,6 +33,10 @@ def main():
 
         if user_input == commands.SHOW_BIRTHDAY:
             show_birthday(book)
+            continue
+
+        if user_input == commands.SORT_FILES:
+            sort_files()
             continue
 
         if user_input == commands.EXIT or user_input == commands.CLOSE:
