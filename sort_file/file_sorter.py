@@ -1,12 +1,7 @@
 from pathlib import Path
 import shutil
-import sys
-script_directory = Path(__file__).resolve().parent
-sys.path.append(str(script_directory))
-import file_parser as parser
-from normalize import normalize
-
-
+from sort_file.normalize import normalize
+import sort_file.file_parser as parser
 
 
 class FileSorter:
