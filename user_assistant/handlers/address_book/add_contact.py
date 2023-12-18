@@ -8,6 +8,7 @@ from user_assistant.class_fields.address import Address
 from user_assistant.class_fields.mail import Mail
 from user_assistant.address_book.address_book_record import AddressBookRecord
 from user_assistant.storages.storage import Storage
+from user_assistant.console.console import Console
 
 
 def input_value(value, class_field):
@@ -17,7 +18,7 @@ def input_value(value, class_field):
             result = class_field(result)
             return result
         except Exception as error:
-            print(error)
+            Console.print_error(error)
             continue
 
 
