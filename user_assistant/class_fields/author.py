@@ -1,11 +1,11 @@
 from .field import Field
 
 
-class Name(Field):
+class Author(Field):
     @staticmethod
     def validate(value):
         if not value:
-            raise ValueError('The name is required')
+            raise ValueError('The author is required')
 
     @Field.value.setter
     def value(self, value: str):
