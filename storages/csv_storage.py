@@ -27,9 +27,11 @@ class CSVStorage(Storage):
         return data
 
     def update(self, records):
+        print(records)
         with open(self.path, 'w', newline='') as file:
             writer = DictWriter(file, fieldnames=self.fieldnames)
-
+            print('The file must have been created')
+            print('writer', writer)
             writer.writeheader()
 
             for record in records:

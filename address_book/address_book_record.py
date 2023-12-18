@@ -6,6 +6,7 @@ from class_fields.address import Address
 from datetime import date
 
 
+
 class AddressBookRecord:
     def __init__(self, name: Name, birthday: Date, mail: Mail, address: Address, phones: list[Phone] = [] ):
         self.name = name
