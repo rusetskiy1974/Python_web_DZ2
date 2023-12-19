@@ -10,7 +10,7 @@ from user_assistant.address_book.address_book_record import AddressBookRecord
 from user_assistant.storages.storage import Storage
 
 
-def input_value(value, class_field, edit = False):
+def input_value(value: str, class_field: classmethod, edit = False):
     while True:
         result = input(f'Enter {value}: ')
         if result == '' and edit == True:

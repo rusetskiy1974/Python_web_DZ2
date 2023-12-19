@@ -7,8 +7,14 @@ from user_assistant.storages.storage import Storage
 
 def remove_contact(book: AddressBook, storage: Type[Storage]):
     name = input_value('name', Name)
+    result = book.find(name.value)
+    
+    if result is not None:
+        book.delete(str(name))
+        storage.update(book.data.values())
+        print(f'Contact {name} removed')
+        return
+    
+    print(f'There is no any contact named: {name}')
+    
 
-    book.delete(str(name))
-    storage.update(book.data.values())
-
-    print(f'Contact {name} removed')
