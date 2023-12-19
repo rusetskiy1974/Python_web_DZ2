@@ -4,6 +4,7 @@ from user_assistant.class_fields.author import Author
 from user_assistant.class_fields.tag import Tag
 from user_assistant.handlers.input_value import input_value
 from user_assistant.notes.notes import Notes
+from user_assistant.console.console import Console
 
 def add_note(notes: Notes):
     author = input_value('author',Author)
@@ -13,4 +14,4 @@ def add_note(notes: Notes):
     note_record = NoteRecord(author=author,text=text,tags=[tag])
     notes.add_note(note_record)
 
-    print(f'Note {note_record.id.value} was added')
+    Console.print_success(f'Note {note_record.id.value} was added')

@@ -8,6 +8,7 @@ from user_assistant.class_fields.address import Address
 from user_assistant.class_fields.mail import Mail
 from user_assistant.storages.storage import Storage
 from user_assistant.handlers.input_value import input_value
+from user_assistant.console.console import Console
 
 FIELDS_CLASS = {'name': Name, 'birthday': Date, 'email': Mail, 'address': Address, 'phone': Phone}
 
@@ -33,7 +34,7 @@ def edit_contact(book: AddressBook, storage: Type[Storage]):
                 record.edit_name(volume)
             elif field == 'phone' and volume:
                 while True:
-                    phone_action = input(f'remove(r)/edit(e)/add(a) :')
+                    phone_action = input(f'Enter command - remove(r)/edit(e)/add(a): ')
                     if phone_action == 'r':
                         record.remove_phone(volume)
                         break
@@ -44,7 +45,7 @@ def edit_contact(book: AddressBook, storage: Type[Storage]):
                         old_phone = input_value('old phone number', Phone)
                         record.edit_phone(str(old_phone), str(volume)) 
                         break
-                    print('Incorrect value')
+                    Console.print_error('Unknown command. Enter command - remove(r)/edit(e)/add(a): ')
       
-    print(f'Contact {name} changed')
+    Console.print_success(f'Contact {name} changed')
     storage.update(book.data.values())

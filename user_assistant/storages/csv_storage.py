@@ -7,13 +7,20 @@ from user_assistant.serializers.serializer import Serializer
 
 
 class CSVStorage(Storage):
-    def __init__(self, path: Path, serializer: Type[Serializer], fieldnames: [str]):
-        self.path = path
+    def __init__(self, dir_path: Path, filename: str, serializer: Type[Serializer], fieldnames: [str]):
+        if not dir_path.exists():
+            dir_path.mkdir()
+
+        self.path = dir_path / Path(filename)
         self.serializer = serializer
         self.fieldnames = fieldnames
 
     def get(self):
         data = []
+
+        if not self.path.exists():
+            return data
+
 
         with open(self.path, 'r', newline='') as file:
             reader = DictReader(file, fieldnames=self.fieldnames)
@@ -27,11 +34,8 @@ class CSVStorage(Storage):
         return data
 
     def update(self, records):
-        print(records)
         with open(self.path, 'w', newline='') as file:
             writer = DictWriter(file, fieldnames=self.fieldnames)
-            print('The file must have been created')
-            print('writer', writer)
             writer.writeheader()
 
             for record in records:

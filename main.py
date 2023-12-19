@@ -15,18 +15,25 @@ from user_assistant.serializers.address_book.address_book_csv_serializer import 
 
 from user_assistant.notes.notes import Notes
 from user_assistant.handlers.notes.add_note import add_note
+from user_assistant.handlers.greeting import greeting
 
-PATH = Path('user_assistant') / Path('databases') / Path('address_book.csv')
+from user_assistant.console.console import Console
+
+DIR_PATH = Path('user_assistant') / Path('databases')
 ADDRESS_BOOK_FIELDS = ['name', 'birthday', 'address', 'phones', 'mail']
 
-address_book_storage = CSVStorage(PATH, AddressBookCSVSerializer, ADDRESS_BOOK_FIELDS)
-book = AddressBook(address_book_storage.get() if PATH.exists() else [])
+address_book_storage = CSVStorage(DIR_PATH, 'address_book.csv', AddressBookCSVSerializer, ADDRESS_BOOK_FIELDS)
+book = AddressBook(address_book_storage.get())
 
 notes = Notes()
 
+
 def main():
+    greeting()
+
     while True:
-        user_input = input('Enter command: ').casefold()
+
+        user_input = Console.input('Enter command: ').casefold()
 
         if user_input == COMMANDS.ADD_CONTACT:
             add_contact(book, address_book_storage)
