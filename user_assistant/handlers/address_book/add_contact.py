@@ -8,20 +8,7 @@ from user_assistant.class_fields.address import Address
 from user_assistant.class_fields.mail import Mail
 from user_assistant.address_book.address_book_record import AddressBookRecord
 from user_assistant.storages.storage import Storage
-
-
-def input_value(value: str, class_field: classmethod, is_edit = False):
-    while True:
-        result = input(f'Enter {value}: ')
-        if result == '' and is_edit:
-            return result
-        try:
-            result = class_field(result)
-            return result
-        except Exception as error:
-            print(error)
-            continue
-
+from user_assistant.handlers.input_value import input_value
 
 def add_contact(book: AddressBook, storage: Type[Storage]):
 

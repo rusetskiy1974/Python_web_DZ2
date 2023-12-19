@@ -6,8 +6,8 @@ from user_assistant.class_fields.phone import Phone
 from user_assistant.class_fields.date import Date
 from user_assistant.class_fields.address import Address
 from user_assistant.class_fields.mail import Mail
-from user_assistant.handlers.address_book.add_contact import input_value
 from user_assistant.storages.storage import Storage
+from user_assistant.handlers.input_value import input_value
 
 FIELDS_CLASS = {'name': Name, 'birthday': Date, 'email': Mail, 'address': Address, 'phone': Phone}
 
