@@ -6,5 +6,6 @@ SHOW_BIRTHDAY = 'show_birthday'
 SORT_FILES = 'sort_files'
 EXIT = 'exit'
 CLOSE = 'close'
+SHOW_ALL = 'show_all'
 
 ADD_NOTE = 'add_note'

@@ -12,6 +12,7 @@ from user_assistant.handlers.input_value import input_value
 FIELDS_CLASS = {'name': Name, 'birthday': Date, 'email': Mail, 'address': Address, 'phone': Phone}
 
 def edit_contact(book: AddressBook, storage: Type[Storage]):
+    print('Press “Enter” with empty value to skip')
     while True:
         name = input_value('contact name', Name)
         record = book.find(str(name))
