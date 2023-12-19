@@ -54,6 +54,10 @@ def main():
             show_all(book)
             continue
 
+        if user_input == COMMANDS.SEARCH_CONTACT:
+            search_contact(book)
+            continue
+
         if user_input == COMMANDS.SORT_FILES:
             sort_files()
             continue
