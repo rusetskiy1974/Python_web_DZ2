@@ -7,5 +7,6 @@ SORT_FILES = 'sort_files'
 EXIT = 'exit'
 CLOSE = 'close'
 SHOW_ALL = 'show_all'
+SEARCH_CONTACT = 'search_contact'
 
 ADD_NOTE = 'add_note'

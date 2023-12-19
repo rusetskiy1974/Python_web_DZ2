@@ -31,7 +31,10 @@ def edit_contact(book: AddressBook, storage: Type[Storage]):
             elif field == 'address' and volume:
                 record.edit_address(volume)
             elif field == 'name' and volume:
+                book.delete(str(record.name))
                 record.edit_name(volume)
+                book.add(record)
+                
             elif field == 'phone' and volume:
                 while True:
                     phone_action = input(f'remove(r)/edit(e)/add(a) :')

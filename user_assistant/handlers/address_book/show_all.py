@@ -1,5 +1,6 @@
-# TODO Add formatted output
+#  TODO Add formatted output
 def show_all(book):
     
-    for record in book:
-        print(record)
+    for value in book.data.values():
+        print(value)
+        
