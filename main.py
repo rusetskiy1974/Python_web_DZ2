@@ -13,6 +13,8 @@ from user_assistant.address_book.address_book import AddressBook
 from user_assistant.storages.csv_storage import CSVStorage
 from user_assistant.serializers.address_book.address_book_csv_serializer import AddressBookCSVSerializer
 
+from user_assistant.notes.notes import Notes
+from user_assistant.handlers.notes.add_note import add_note
 
 PATH = Path('user_assistant') / Path('databases') / Path('address_book.csv')
 ADDRESS_BOOK_FIELDS = ['name', 'birthday', 'address', 'phones', 'mail']
@@ -20,6 +22,7 @@ ADDRESS_BOOK_FIELDS = ['name', 'birthday', 'address', 'phones', 'mail']
 address_book_storage = CSVStorage(PATH, AddressBookCSVSerializer, ADDRESS_BOOK_FIELDS)
 book = AddressBook(address_book_storage.get() if PATH.exists() else [])
 
+notes = Notes()
 
 def main():
     while True:
@@ -30,11 +33,11 @@ def main():
             continue
 
         if user_input == COMMANDS.REMOVE_CONTACT:
-            remove_contact()
+            remove_contact(book, address_book_storage)
             continue
 
         if user_input == COMMANDS.EDIT_CONTACT:
-            edit_contact()
+            edit_contact(book, address_book_storage)
             continue
 
         if user_input == COMMANDS.FIND_CONTACT:
@@ -48,10 +51,14 @@ def main():
         if user_input == COMMANDS.SORT_FILES:
             sort_files()
             continue
-
+        
         if user_input in (COMMANDS.EXIT, COMMANDS.CLOSE):
             do_exit()
             break
+
+        if user_input  == COMMANDS.ADD_NOTE:
+            add_note(notes)
+            continue
 
 
 if __name__ == '__main__':

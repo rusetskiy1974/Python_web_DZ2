@@ -8,19 +8,8 @@ from user_assistant.class_fields.address import Address
 from user_assistant.class_fields.mail import Mail
 from user_assistant.address_book.address_book_record import AddressBookRecord
 from user_assistant.storages.storage import Storage
+from user_assistant.handlers.input_value import input_value
 from user_assistant.console.console import Console
-
-
-def input_value(value, class_field):
-    while True:
-        result = input(f'Enter {value}: ')
-        try:
-            result = class_field(result)
-            return result
-        except Exception as error:
-            Console.print_error(error)
-            continue
-
 
 def add_contact(book: AddressBook, storage: Type[Storage]):
 
@@ -34,4 +23,4 @@ def add_contact(book: AddressBook, storage: Type[Storage]):
     book.add(record)
     storage.update(book.data.values())
 
-    print(f'Contact {name.value} was added')
+    Console.print_success(f'Contact {name.value} was added')

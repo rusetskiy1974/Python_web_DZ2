@@ -1,3 +1,4 @@
+# TODO Add formatted output
 def show_birthday(book):
     while True:
         try:
@@ -10,4 +11,6 @@ def show_birthday(book):
         except:
            print(ValueError('Days may be integer volume'))
 
-    print(book.show_birthday(days))
+    result = book.show_birthday(days)
+    for record in result:
+        print(record)
