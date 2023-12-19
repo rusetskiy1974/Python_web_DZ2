@@ -17,12 +17,8 @@ class Console:
 
     @staticmethod
     def print_error(text: str):
-        print('!!!print_error!!!')
         console.print(text, style='bold red')
 
     @staticmethod
     def print_success(text: str):
         console.print(text, style='success')
-
-
-Console.print_error('asdfsdf')
