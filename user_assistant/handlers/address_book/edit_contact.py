@@ -13,23 +13,23 @@ FIELDS_CLASS = {'name': Name, 'birthday': Date, 'email': Mail, 'address': Addres
 
 def edit_contact(book: AddressBook, storage: Type[Storage]):
     while True:
-        name = Name(input(f'Enter contact name: '))
+        name = input_value(f'contact name: ', Name)
         record = book.find(str(name))
         if record:
             break
         else:
-            print('Input correct name')
+            print('Input existing name')
 
     for field in FIELDS_CLASS.keys():  
-        if input(f'Chang {field} Y/y :') in ['Y','y']:  
-            volume = input_value(f'new {field}', FIELDS_CLASS[field])
-            if field == 'birthday':
+        # if input(f'Chang {field} Y/y :') in ['Y','y']:  
+            volume = input_value(f'new {field}', FIELDS_CLASS[field], True)
+            if field == 'birthday' and volume:
                 record.edit_birthday(volume)
-            elif field == 'email':
+            elif field == 'email' and volume:
                 record.edit_email(volume)
-            elif field == 'address':
+            elif field == 'address' and volume:
                 record.edit_address(volume)
-            elif field == 'name':
+            elif field == 'name' and volume:
                 record.edit_name(volume)
             elif field == 'phone':
                 while True:

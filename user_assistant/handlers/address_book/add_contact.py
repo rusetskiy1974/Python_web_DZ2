@@ -10,9 +10,11 @@ from user_assistant.address_book.address_book_record import AddressBookRecord
 from user_assistant.storages.storage import Storage
 
 
-def input_value(value, class_field):
+def input_value(value, class_field, edit = False):
     while True:
         result = input(f'Enter {value}: ')
+        if result == '' and edit == True:
+            return result
         try:
             result = class_field(result)
             return result
