@@ -1,7 +1,8 @@
 from datetime import datetime
+import re
 
 from .field import Field
-from user_assistant.validations import date_validation
+
 
 class Date(Field):
     DATE_FORMAT = '%d.%m.%Y'
@@ -11,7 +12,7 @@ class Date(Field):
 
     @staticmethod
     def validate(value: str):
-        result = date_validation(value)
+        result = re.match(r'\d{2}\.\d{2}\.\d{4}', value)
 
         if result is None:
             raise ValueError('The date is incorrect')
