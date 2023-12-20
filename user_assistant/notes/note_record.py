@@ -35,7 +35,7 @@ class NoteRecord:
         self.tags.append(new_tag)
 
     def remove_tag(self, tag: Tag):
-        self.tags.remove(tag)
+        self.tags.remove(tag)  
 
 
          

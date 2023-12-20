@@ -19,6 +19,7 @@ from user_assistant.notes.notes import Notes
 from user_assistant.serializers.notes.notes_csv_serializer import NotesCSVSerializer
 from user_assistant.handlers.notes.add_note import add_note
 from user_assistant.handlers.notes.find_note import find_note
+from user_assistant.handlers.notes.remove_note import remove_note
 from user_assistant.handlers.greeting import greeting
 from user_assistant.handlers.notes.show_all_notes import show_all_notes
 

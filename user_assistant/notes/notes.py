@@ -4,7 +4,7 @@ from .note_record import NoteRecord
 
 class Notes(UserDict):
     def __init__(self, records: list[NoteRecord] = []):
-        self.data = {record.id.value: record for record in records}
+        self.data = {record.author.value: record for record in records}
 
     def add_note(self, note: NoteRecord):
         self.data[note.id.value] = note
