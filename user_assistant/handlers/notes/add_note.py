@@ -8,6 +8,7 @@ from user_assistant.handlers.input_value import input_value
 from user_assistant.notes.notes import Notes
 from user_assistant.storages.storage import Storage
 from user_assistant.console.console import Console
+from user_assistant.console.table_format.notes_table import note_titles, get_notes_row
 
 
 def add_note(notes: Notes, storage: Type[Storage]):
@@ -19,4 +20,4 @@ def add_note(notes: Notes, storage: Type[Storage]):
     notes.add_note(note_record)
     storage.update(notes.data.values())
 
-    Console.print_success(f'Note {note_record.id.value} was added')
+    Console.print_table(f'Created note', note_titles, [get_notes_row(note_record)])

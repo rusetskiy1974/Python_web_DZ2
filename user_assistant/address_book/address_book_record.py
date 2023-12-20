@@ -63,7 +63,6 @@ class AddressBookRecord:
         self.address = new_address
 
         return self.address
-    
 
     def days_to_birthday(self):
         today = date.today()

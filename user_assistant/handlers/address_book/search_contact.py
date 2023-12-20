@@ -1,17 +1,18 @@
 from user_assistant.console.console import Console
+from user_assistant.console.table_format.address_book_table import address_book_titles, get_address_book_row
+
 
 def search_contact(book):
     while True:
         string = Console.input(f'Input contact name or phone:')
         if string:
             break
-        Console.print_error('Value is missing, try agane')
+        Console.print_error('Value is empty. Please try again')
 
-    result = book.search(string)
+    records = book.search(string)
 
-    if result:
-        for record in result:
-            Console.print_success(record)
+    if records:
+        Console.print_table('Searched contacts', address_book_titles, list(map(get_address_book_row, records)))
          
     else:
         Console.print_error(f'There is no any contact by your request')

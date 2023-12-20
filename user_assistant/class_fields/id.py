@@ -1,7 +1,7 @@
 from .field import Field
 from datetime import datetime
-import math
+
 
 class ID(Field):
-    def __init__(self):
-        super().__init__(f'{id(self)}_{math.floor(datetime.timestamp(datetime.now()))}')
+    def __init__(self, init_id=datetime.timestamp(datetime.now())):
+        super().__init__(init_id)
