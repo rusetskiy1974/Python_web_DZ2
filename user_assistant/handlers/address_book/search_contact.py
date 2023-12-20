@@ -1,16 +1,17 @@
-#  TODO Add formatted output
+from user_assistant.console.console import Console
+
 def search_contact(book):
     while True:
-        string = input(f'Input keyword for name or phone :')
+        string = Console.input(f'Input keyword for name or phone :')
         if string:
             break
-        print('Value is missing, try agane')
+        Console.print_error('Value is missing, try agane')
 
     result = book.search(string)
 
     if result:
         for record in result:
-            print(record)
+            Console.print_success(record)
          
     else:
-        print(f'There is no any contact with keyword: {string}')
+        Console.print_error(f'There is no any contact with keyword: {string}')
