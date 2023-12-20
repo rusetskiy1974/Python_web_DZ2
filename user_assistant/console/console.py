@@ -33,7 +33,6 @@ class Console:
         table = Table(title=title)
 
         for index, title in enumerate(column_titles):
-            justify = 'left' if index == 0 else 'right' if index + 1 == len(column_titles) else 'center'
             table.add_column(title, style=table_colors[index], justify='center', vertical='top', min_width=15)
 
         for row in rows:
