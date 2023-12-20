@@ -14,17 +14,21 @@ from user_assistant.storages.csv_storage import CSVStorage
 from user_assistant.serializers.address_book.address_book_csv_serializer import AddressBookCSVSerializer
 
 from user_assistant.notes.notes import Notes
+from user_assistant.serializers.notes.notes_csv_serializer import NotesCSVSerializer
 from user_assistant.handlers.notes.add_note import add_note
+from user_assistant.handlers.notes.find_note import find_note
 from user_assistant.handlers.greeting import greeting
 
 from user_assistant.console.console import Console
 
-DIR_PATH = Path('user_assistant') / Path('databases')
+STORAGE_PATH = Path('user_assistant') / Path('databases')
 ADDRESS_BOOK_FIELDS = ['name', 'birthday', 'address', 'phones', 'mail']
+NOTE_FIELDS = ['author', 'text', 'tags', 'id', 'created_at']
 
-address_book_storage = CSVStorage(DIR_PATH, 'address_book.csv', AddressBookCSVSerializer, ADDRESS_BOOK_FIELDS)
+address_book_storage = CSVStorage(STORAGE_PATH, 'address_book.csv', AddressBookCSVSerializer, ADDRESS_BOOK_FIELDS)
 book = AddressBook(address_book_storage.get())
 
+notes_storage = CSVStorage(STORAGE_PATH, 'notes.csv', NotesCSVSerializer, NOTE_FIELDS)
 notes = Notes()
 
 
@@ -63,8 +67,12 @@ def main():
             do_exit()
             break
 
-        if user_input  == COMMANDS.ADD_NOTE:
-            add_note(notes)
+        if user_input == COMMANDS.ADD_NOTE:
+            add_note(notes, notes_storage)
+            continue
+
+        if user_input == COMMANDS.FIND_NOTE:
+            find_note(notes)
             continue
 
 

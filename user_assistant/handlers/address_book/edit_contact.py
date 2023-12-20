@@ -15,11 +15,11 @@ FIELDS_CLASS = {'name': Name, 'birthday': Date, 'email': Mail, 'address': Addres
 def edit_contact(book: AddressBook, storage: Type[Storage]):
     while True:
         name = input_value('contact name', Name)
-        record = book.find(str(name))
+        record = book.find(name.value)
         if record:
             break
         else:
-            print('Input existing name')
+            Console.print_error('Input existing name')
 
     for field in FIELDS_CLASS.keys():  
             volume = input_value(f'new {field}', FIELDS_CLASS[field], True)
@@ -34,7 +34,7 @@ def edit_contact(book: AddressBook, storage: Type[Storage]):
                 record.edit_name(volume)
             elif field == 'phone' and volume:
                 while True:
-                    phone_action = input(f'Enter command - remove(r)/edit(e)/add(a): ')
+                    phone_action = Console.input(f'Enter command - remove(r)/edit(e)/add(a): ')
                     if phone_action == 'r':
                         record.remove_phone(volume)
                         break

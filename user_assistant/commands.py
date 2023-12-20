@@ -8,3 +8,4 @@ EXIT = 'exit'
 CLOSE = 'close'
 
 ADD_NOTE = 'add_note'
+FIND_NOTE = 'find_note'
