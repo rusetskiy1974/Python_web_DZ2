@@ -10,5 +10,5 @@ setup(name='user_assistant',
       packages=find_namespace_packages(),
       include_package_data=True,
       install_requires=['rich'],
-      entry_points={'console_scripts': ['user_assistant = main:main']}
+      entry_points={'console_scripts': ['user_assistant = user_assistant.main:main']}
 )
