@@ -19,7 +19,7 @@ from user_assistant.notes.notes import Notes
 from user_assistant.serializers.notes.notes_csv_serializer import NotesCSVSerializer
 from user_assistant.handlers.notes.add_note import add_note
 from user_assistant.handlers.notes.find_note import find_note
-from user_assistant.handlers.notes.add_tages import add_tages
+from user_assistant.handlers.notes.add_tags import add_tags
 from user_assistant.handlers.greeting import greeting
 
 from user_assistant.console.console import Console
@@ -86,8 +86,8 @@ def main():
             find_note(notes)
             continue
 
-        if user_input == COMMANDS.ADD_TAGES:
-            add_tages(notes)
+        if user_input == COMMANDS.ADD_TAGS:
+            add_tags(notes)
             continue
 
 if __name__ == '__main__':
