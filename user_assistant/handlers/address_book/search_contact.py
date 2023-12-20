@@ -2,7 +2,7 @@ from user_assistant.console.console import Console
 
 def search_contact(book):
     while True:
-        string = Console.input(f'Input keyword for name or phone :')
+        string = Console.input(f'Input contact name or phone:')
         if string:
             break
         Console.print_error('Value is missing, try agane')

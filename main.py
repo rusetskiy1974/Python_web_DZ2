@@ -61,8 +61,8 @@ def main():
             show_birthday(book)
             continue
 
-        if user_input == COMMANDS.SHOW_ALL:
-            show_all(book)
+        if user_input == COMMANDS.SHOW_ALL_CONTACTS:
+            show_all_contacts(book)
             continue
 
         if user_input == COMMANDS.SEARCH_CONTACT:
