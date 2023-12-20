@@ -4,6 +4,8 @@ EDIT_CONTACT = 'edit_contact'
 FIND_CONTACT = 'find_contact'
 SHOW_BIRTHDAY = 'show_birthday'
 SORT_FILES = 'sort_files'
+SHOW_ALL_CONTACTS = 'show_all_contacts'
+SEARCH_CONTACT = 'search_contact'
 EXIT = 'exit'
 CLOSE = 'close'
 

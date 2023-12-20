@@ -1,16 +1,17 @@
-# TODO Add formatted output
+from user_assistant.console.console import Console
+
 def show_birthday(book):
     while True:
         try:
-            days = int(input(f'Enter volume days :'))
+            days = int(Console.input(f'Enter volume days :'))
             if days in range(1,365):
                 break
             else:
-                print('Days may be in interval 1-365')
+                Console.print_error('Days may be in interval 1-365')
                 continue
         except:
-           print(ValueError('Days may be integer volume'))
+           Console.print_error(ValueError('Days may be integer volume'))
 
     result = book.show_birthday(days)
     for record in result:
-        print(record)
+        Console.print_success(record)

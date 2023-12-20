@@ -13,6 +13,7 @@ from user_assistant.console.console import Console
 FIELDS_CLASS = {'name': Name, 'birthday': Date, 'email': Mail, 'address': Address, 'phone': Phone}
 
 def edit_contact(book: AddressBook, storage: Type[Storage]):
+    Console.print_tip('Press “Enter” with empty value to skip')
     while True:
         name = input_value('contact name', Name)
         record = book.find(name.value)
@@ -31,7 +32,9 @@ def edit_contact(book: AddressBook, storage: Type[Storage]):
             elif field == 'address' and volume:
                 record.edit_address(volume)
             elif field == 'name' and volume:
+                book.delete(str(record.name))
                 record.edit_name(volume)
+                book.add(record)
             elif field == 'phone' and volume:
                 while True:
                     phone_action = Console.input(f'Enter command - remove(r)/edit(e)/add(a): ')
