@@ -13,6 +13,7 @@ from user_assistant.console.console import Console
 FIELDS_CLASS = {'name': Name, 'birthday': Date, 'email': Mail, 'address': Address, 'phone': Phone}
 
 def edit_contact(book: AddressBook, storage: Type[Storage]):
+    print()
     while True:
         name = input_value('contact name', Name)
         record = book.find(name.value)
