@@ -11,3 +11,4 @@ CLOSE = 'close'
 
 ADD_NOTE = 'add_note'
 FIND_NOTE = 'find_note'
+SHOW_ALL_NOTES = 'show_all_notes'

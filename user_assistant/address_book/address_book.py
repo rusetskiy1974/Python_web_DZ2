@@ -33,7 +33,7 @@ class AddressBook(UserDict):
 
         return self.data
 
-    def find(self, name: str):
+    def find(self, name: str) -> AddressBookRecord | None:
         return self.data.get(name, None)
 
     def delete(self, name: str):
@@ -56,7 +56,7 @@ class AddressBook(UserDict):
     
     def show_birthday(self, value: int):
         return list(filter(
-            lambda record:  AddressBookRecord.days_to_birthday(record) <= value,
+            lambda record: AddressBookRecord.days_to_birthday(record) <= value,
             self.data.values()
         ))
          

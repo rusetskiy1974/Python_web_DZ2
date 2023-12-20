@@ -20,6 +20,7 @@ from user_assistant.serializers.notes.notes_csv_serializer import NotesCSVSerial
 from user_assistant.handlers.notes.add_note import add_note
 from user_assistant.handlers.notes.find_note import find_note
 from user_assistant.handlers.greeting import greeting
+from user_assistant.handlers.notes.show_all_notes import show_all_notes
 
 from user_assistant.console.console import Console
 
@@ -31,7 +32,7 @@ address_book_storage = CSVStorage(STORAGE_PATH, 'address_book.csv', AddressBookC
 book = AddressBook(address_book_storage.get())
 
 notes_storage = CSVStorage(STORAGE_PATH, 'notes.csv', NotesCSVSerializer, NOTE_FIELDS)
-notes = Notes()
+notes = Notes(notes_storage.get())
 
 
 def main():
@@ -83,6 +84,10 @@ def main():
 
         if user_input == COMMANDS.FIND_NOTE:
             find_note(notes)
+            continue
+
+        if user_input == COMMANDS.SHOW_ALL_NOTES:
+            show_all_notes(notes)
             continue
 
 

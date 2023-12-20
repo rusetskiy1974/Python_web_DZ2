@@ -7,6 +7,7 @@ from user_assistant.class_fields.text import Text
 from user_assistant.class_fields.id import ID
 from user_assistant.class_fields.date_time import DateTime
 
+
 class NotesCSVSerializer(Serializer):
     TAG_SEPARATOR = '|'
 
@@ -29,6 +30,4 @@ class NotesCSVSerializer(Serializer):
         text = Text(record['text'])
         tags = list(map(lambda tag: Tag(tag), record['tags'].split(cls.TAG_SEPARATOR)))
 
-        return NoteRecord(author=author, text=text, tags=tags, id=note_id, created_at=created_at)
-
-print(NotesCSVSerializer.TAG_SEPARATOR.join(['sdafasdf', 'adsfasdf']))
+        return NoteRecord(author=author, text=text, tags=tags, note_id=note_id, created_at=created_at)

@@ -10,6 +10,8 @@ from user_assistant.address_book.address_book_record import AddressBookRecord
 from user_assistant.storages.storage import Storage
 from user_assistant.handlers.input_value import input_value
 from user_assistant.console.console import Console
+from user_assistant.console.table_format.address_book_table import address_book_titles, get_address_book_row
+
 
 def add_contact(book: AddressBook, storage: Type[Storage]):
 
@@ -23,4 +25,4 @@ def add_contact(book: AddressBook, storage: Type[Storage]):
     book.add(record)
     storage.update(book.data.values())
 
-    Console.print_success(f'Contact {name.value} was added')
+    Console.print_table('Created contact', address_book_titles, [get_address_book_row(record)])

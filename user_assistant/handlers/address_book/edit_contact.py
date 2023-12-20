@@ -9,6 +9,8 @@ from user_assistant.class_fields.mail import Mail
 from user_assistant.storages.storage import Storage
 from user_assistant.handlers.input_value import input_value
 from user_assistant.console.console import Console
+from user_assistant.console.table_format.address_book_table import address_book_titles, get_address_book_row
+
 
 FIELDS_CLASS = {'name': Name, 'birthday': Date, 'email': Mail, 'address': Address, 'phone': Phone}
 
@@ -50,5 +52,6 @@ def edit_contact(book: AddressBook, storage: Type[Storage]):
                         break
                     Console.print_error('Unknown command. Enter command - remove(r)/edit(e)/add(a): ')
       
-    Console.print_success(f'Contact {name} changed')
-    storage.update(book.data.values())
+    storage.update(book.data.values(), address_book_titles, [get_address_book_row(record)])
+
+    Console.print_table('Updated contact')
