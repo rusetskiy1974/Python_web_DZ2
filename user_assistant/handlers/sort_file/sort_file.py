@@ -1,5 +1,6 @@
 from pathlib import Path
 from user_assistant.sort_file.file_sorter import FileSorter
+from user_assistant.console.console import Console
 
 
 def sort_files():
@@ -7,5 +8,7 @@ def sort_files():
         folder_for_scan = input('Enter folder for scan: ')
         sorter = FileSorter(Path(folder_for_scan))
         sorter.sort_files()
+
+        Console.print_error('The directory was sorted.')
     except (FileNotFoundError, OSError) as e:
-        print(f'Error: {e}')
+        Console.print_error(f'Error: {e}')

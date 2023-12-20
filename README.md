@@ -1,4 +1,9 @@
-To install this package to run from terminal you should perform following steps:
+Install packages from requirements
+```shell
+python3 -m pip install -r requirements.txt
+```
+
+Install this package on local machine you should perform following steps:
 
 1. Build the application
 ```shell
