@@ -92,7 +92,7 @@ def main():
             continue
 
         if user_input == COMMANDS.REMOVE_NOTE:
-            remove_note(notes)
+            remove_note(notes, notes_storage)
             continue
 
 
