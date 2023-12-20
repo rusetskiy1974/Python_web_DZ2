@@ -14,6 +14,7 @@ from user_assistant.console.table_format.address_book_table import address_book_
 
 FIELDS_CLASS = {'name': Name, 'birthday': Date, 'email': Mail, 'address': Address, 'phone': Phone}
 
+
 def edit_contact(book: AddressBook, storage: Type[Storage]):
     Console.print_tip('Press “Enter” with empty value to skip')
     while True:
@@ -52,6 +53,6 @@ def edit_contact(book: AddressBook, storage: Type[Storage]):
                         break
                     Console.print_error('Unknown command. Enter command - remove(r)/edit(e)/add(a): ')
       
-    storage.update(book.data.values(), address_book_titles, [get_address_book_row(record)])
+    storage.update(book.data.values())
 
-    Console.print_table('Updated contact')
+    Console.print_table('Updated contact', address_book_titles, [get_address_book_row(record)])
