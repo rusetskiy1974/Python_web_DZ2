@@ -6,7 +6,7 @@ from user_assistant.handlers.address_book.remove_contact import remove_contact
 from user_assistant.handlers.address_book.edit_contact import edit_contact
 from user_assistant.handlers.address_book.find_contact import find_contact
 from user_assistant.handlers.address_book.show_birthday import show_birthday
-from user_assistant.handlers.address_book.show_all import show_all_contacts
+from user_assistant.handlers.address_book.show_all_contacts import show_all_contacts
 from user_assistant.handlers.address_book.search_contact import search_contact
 from user_assistant.handlers.sort_file.sort_file import sort_files
 from user_assistant.handlers.do_exit import do_exit
