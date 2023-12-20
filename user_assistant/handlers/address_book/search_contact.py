@@ -14,4 +14,4 @@ def search_contact(book):
             Console.print_success(record)
          
     else:
-        Console.print_error(f'There is no any contact with keyword: {string}')
+        Console.print_error(f'There is no any contact by your request')
