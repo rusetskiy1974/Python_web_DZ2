@@ -19,5 +19,6 @@ SEARCH_BY_AUTHOR = 'search_by_author'
 EDIT_NOTE = 'edit_note'
 SORT_BY_TAGS = 'sort_by_tags'
 SORT_BY_AUTHOR = 'sort_by_author'
+REMOVE_TAGS = 'remove_tags'
 
 
