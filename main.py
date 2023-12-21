@@ -26,7 +26,7 @@ from user_assistant.handlers.notes.search_notes_by_tag import search_notes_by_ta
 from user_assistant.handlers.notes.edit_note import edit_note
 from user_assistant.handlers.notes.sort_by_tags import sort_by_tags
 from user_assistant.handlers.notes.sort_by_author import sort_by_author
-from user_assistant.handlers.notes.add_tag import add_tag
+from user_assistant.handlers.notes.add_tags import add_tags
 
 
 from user_assistant.handlers.greeting import greeting
@@ -128,8 +128,8 @@ def main():
         if user_input == COMMANDS.SORT_BY_AUTHOR:
             sort_by_author(notes)
             continue
-        if user_input == COMMANDS.ADD_TAG:
-            add_tag(notes, notes_storage)
+        if user_input == COMMANDS.ADD_TAGS:
+            add_tags(notes, notes_storage)
             continue
 
 
