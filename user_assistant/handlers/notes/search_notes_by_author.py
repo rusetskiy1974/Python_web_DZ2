@@ -10,10 +10,5 @@ from user_assistant.console.table_format.notes_table import note_titles, get_not
 
 def search_notes_by_author(notes: Notes):
     author = input_value('author', Author)
-    result_notes = notes.search_by_author(author)
-
-    if result_notes:
-        Console.print_table(f"Notes found for tag: {author}", note_titles, list(map(get_notes_row,result_notes)))
-    else:
-        Console.print_error(f"No notes found for the specified tag: {author}")
-
+    result_notes = notes.search_by_author(author.value)
+    Console.print_table(f"Notes found for tag: {author}", note_titles, list(map(get_notes_row,result_notes)))
