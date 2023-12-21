@@ -4,7 +4,7 @@ from .note_record import NoteRecord
 
 class Notes(UserDict):
     def __init__(self, records: list[NoteRecord] = []):
-        self.data = {record.author.value: record for record in records}
+        self.data = {record.id.value: record for record in records}
 
     def add_note(self, note: NoteRecord):
         self.data[note.id.value] = note
@@ -23,3 +23,6 @@ class Notes(UserDict):
     def find(self, id: str):
         return self.data.get(id, None)
 
+    def search_by_author(self, searched_author: [str]):
+        result_notes = [note for note in self.data.values() if note.str_author == searched_author]
+        return result_notes

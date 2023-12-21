@@ -7,18 +7,20 @@ from user_assistant.storages.storage import Storage
 
 def remove_note(notes: Notes, storage: Type[Storage]):
     value = Console.input('Input name or tag: ')
-    result  = notes.find(value)
-     
-    if result is not None:
-        notes.delete(value)
+    result  = notes.search_by_author(value)
+    
+    if result != []:
+        for record in result:
+            notes.delete(record.id.value)
+            Console.print_table(f'Remove note', note_titles, [get_notes_row(record)])
         storage.update(notes.data.values())
-        return Console.print_table(f'Remove note', note_titles, [get_notes_row(result)])
+        return 
     
     result = notes.search_by_tags([value])   
      
     if result != []:
         for record in result:
-            notes.delete(record.author.value)
+            notes.delete(record.id.value)
             Console.print_table(f'Remove notes', note_titles, [get_notes_row(record)])
         storage.update(notes.data.values())
         return 
