@@ -8,7 +8,7 @@ from user_assistant.handlers.input_value import input_value
 from user_assistant.console.console import Console
 from user_assistant.console.table_format.address_book_table import address_book_titles, get_address_book_row
 
-def edit_phone(book: AddressBook, storage: Type[Storage]):
+def remove_phone(book: AddressBook, storage: Type[Storage]):
     while True:
         name = input_value('contact name', Name)
         record = book.find(name.value)
