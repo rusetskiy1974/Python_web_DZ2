@@ -7,7 +7,8 @@ def find_note(notes: Notes):
     value = Console.input(f'Enter note id: ')
 
     result = notes.find(value)
-
+    
+    
     if result is not None:
         return Console.print_table(f'Found note', note_titles, [get_notes_row(result)])
 

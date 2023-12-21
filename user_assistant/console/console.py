@@ -9,6 +9,7 @@ console = RichConsole()
 table_colors = ['slate_blue1', 'magenta', 'chartreuse1', 'sea_green1', 'pale_turquoise1', 'yellow2']
 input_emojis = ['🤩', '😃', '😂', '🤑', '🤗', '😜', '🤠', '🥸', '🤡', '🥳', '😍']
 
+
 class Console:
     @staticmethod
     def print_error(text: str):

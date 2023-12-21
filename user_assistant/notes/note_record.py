@@ -24,6 +24,10 @@ class NoteRecord:
     @property
     def str_tags(self):
         return list(map(lambda tag: tag.value, self.tags))
+    
+    @property
+    def str_author(self):
+        return self.author.value
 
     def update_text(self, new_text: Text):
         self.text = new_text
@@ -35,7 +39,7 @@ class NoteRecord:
         self.tags.append(new_tag)
 
     def remove_tag(self, tag: Tag):
-        self.tags.remove(tag)
+        self.tags.remove(tag)  
 
 
          

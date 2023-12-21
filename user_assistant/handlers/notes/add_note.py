@@ -19,5 +19,6 @@ def add_note(notes: Notes, storage: Type[Storage]):
     note_record = NoteRecord(author=author,text=text,tags=[tag])
     notes.add_note(note_record)
     storage.update(notes.data.values())
+    
 
     Console.print_table(f'Created note', note_titles, [get_notes_row(note_record)])
