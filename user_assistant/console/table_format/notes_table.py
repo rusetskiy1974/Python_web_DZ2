@@ -9,6 +9,6 @@ def get_notes_row(record: NoteRecord):
         record.author.value,
         record.text.value,
         ', '.join(record.str_tags),
-        record.id.value,
+        str(record.id),
         str(record.created_at),
     ]
