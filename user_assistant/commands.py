@@ -14,4 +14,5 @@ FIND_NOTE = 'find_note'
 SHOW_ALL_NOTES = 'show_all_notes'
 REMOVE_NOTE = 'remove_note'
 EDIT_NOTE = 'edit_note'
+SORT_TAGS = 'sort_tags'
 
