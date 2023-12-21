@@ -20,8 +20,10 @@ from user_assistant.serializers.notes.notes_csv_serializer import NotesCSVSerial
 from user_assistant.handlers.notes.add_note import add_note
 from user_assistant.handlers.notes.find_note import find_note
 from user_assistant.handlers.notes.remove_note import remove_note
+
 from user_assistant.handlers.notes.search_notes_by_author import search_notes_by_author
 from user_assistant.handlers.notes.search_notes_by_tag import search_notes_by_tag
+from user_assistant.handlers.notes.edit_note import edit_note
 
 
 from user_assistant.handlers.greeting import greeting
@@ -102,6 +104,7 @@ def main():
             remove_note(notes, notes_storage)
             continue
 
+
         if user_input == COMMANDS.SEARCH_BY_TAG:
             search_notes_by_tag(notes)
             continue
@@ -110,6 +113,11 @@ def main():
             search_notes_by_author(notes)
             continue
             
+
+        if user_input == COMMANDS.EDIT_NOTE:
+            edit_note(notes, notes_storage)
+            continue
+
 
 
 if __name__ == '__main__':
