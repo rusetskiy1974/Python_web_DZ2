@@ -31,5 +31,5 @@ def edit_note(notes: Notes, storage: Type[Storage]):
         if field == 'text' and new_volume:
             existing_note.edit_text(new_volume)
                  
-    Console.print_table(f'Selected note chahged', note_titles, [get_notes_row(existing_note)])
+    Console.print_table(f'Updated note chahged', note_titles, [get_notes_row(existing_note)])
     storage.update(notes.data.values())
