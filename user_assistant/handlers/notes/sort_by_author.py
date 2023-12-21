@@ -5,5 +5,5 @@ from user_assistant.notes.notes import Notes
 def sort_by_author(notes: Notes):
     result_sort = notes.sort_by_author()
     
-    if result_sort is not None:
+    if result_sort:
         Console.print_table(f'Sorted notes by author: ', note_titles, list(map(get_notes_row,result_sort)))
