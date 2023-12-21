@@ -11,7 +11,7 @@ def remove_note(notes: Notes, storage: Type[Storage]):
     result = notes.find(value)
 
     if result is not None:
-       notes.delete(result)
+       notes.delete(value)
        storage.update(notes.data.values())
        return Console.print_table(f'Remove note', note_titles, [get_notes_row(result)])
        
