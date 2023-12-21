@@ -18,7 +18,7 @@ class Notes(UserDict):
         return sorted_notes
     
     def sort_by_author(self):
-        sorted_notes = sorted(self.data.values(), key=lambda note: ','.join(note.str_author))
+        sorted_notes = sorted(self.data.values(), key=lambda note: ','.join(note.str_author.casefold()))
         return sorted_notes
 
     def delete(self, id: str):
