@@ -19,12 +19,15 @@ from user_assistant.notes.notes import Notes
 from user_assistant.serializers.notes.notes_csv_serializer import NotesCSVSerializer
 from user_assistant.handlers.notes.add_note import add_note
 from user_assistant.handlers.notes.find_note import find_note
+from user_assistant.handlers.notes.remove_note import remove_note
+
 from user_assistant.handlers.greeting import greeting
 from user_assistant.handlers.notes.show_all_notes import show_all_notes
 
 from user_assistant.console.console import Console
 
-STORAGE_PATH = Path('') / Path('user_assistant/databases')
+STORAGE_PATH = Path('.') / Path('user_assistant') /  Path('databases')
+
 ADDRESS_BOOK_FIELDS = ['name', 'birthday', 'address', 'phones', 'mail']
 NOTE_FIELDS = ['author', 'text', 'tags', 'id', 'created_at']
 
@@ -88,6 +91,10 @@ def main():
 
         if user_input == COMMANDS.SHOW_ALL_NOTES:
             show_all_notes(notes)
+            continue
+
+        if user_input == COMMANDS.REMOVE_NOTE:
+            remove_note(notes, notes_storage)
             continue
 
 
