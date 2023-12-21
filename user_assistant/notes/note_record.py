@@ -41,5 +41,13 @@ class NoteRecord:
     def remove_tag(self, tag: Tag):
         self.tags.remove(tag)  
 
+    def edit_author(self, new_author: Author):
+        self.author = new_author  
+        return self.author  
+
+    def edit_text(self, new_text: Text):
+        self.text = new_text 
+        return self.text  
+
 
          
