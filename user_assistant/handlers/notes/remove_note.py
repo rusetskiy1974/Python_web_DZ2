@@ -6,23 +6,13 @@ from user_assistant.console.table_format.notes_table import note_titles, get_not
 from user_assistant.storages.storage import Storage
 
 def remove_note(notes: Notes, storage: Type[Storage]):
-    value = Console.input('Input name or tag: ')
-    result  = notes.search_by_author(value)
+    value = Console.input('Input ID: ')
     
-    if result != []:
-        for record in result:
-            notes.delete(record.id.value)
-            Console.print_table(f'Remove note', note_titles, [get_notes_row(record)])
-        storage.update(notes.data.values())
-        return 
-    
-    result = notes.search_by_tags([value])   
-     
-    if result != []:
-        for record in result:
-            notes.delete(record.id.value)
-            Console.print_table(f'Remove notes', note_titles, [get_notes_row(record)])
-        storage.update(notes.data.values())
-        return 
+    result = notes.find(value)
 
+    if result is not None:
+       notes.delete(result)
+       storage.update(notes.data.values())
+       return Console.print_table(f'Remove note', note_titles, [get_notes_row(result)])
+       
     Console.print_error(f'There is no any notes named: {value}') 
