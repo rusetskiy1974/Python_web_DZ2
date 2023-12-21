@@ -23,7 +23,7 @@ class NoteRecord:
 
     @property
     def str_tags(self):
-        return list(map(lambda tag: tag.value, self.tags))
+        return list(map(lambda tag: tag.value.casefold(), self.tags))
     
     @property
     def str_author(self):
