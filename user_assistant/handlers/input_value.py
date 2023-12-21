@@ -3,7 +3,7 @@ from user_assistant.console.console import Console
 
 def input_value(value: str, class_field: classmethod, is_edit = False):
     while True:
-        result = Console.input(f'Enter {value}: ')
+        result = Console.input(f'Enter {value}: ').strip()
         if result == '' and is_edit:
             return result
         try:

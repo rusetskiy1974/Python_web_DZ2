@@ -24,5 +24,4 @@ class Notes(UserDict):
         return self.data.get(id, None)
 
     def search_by_author(self, searched_author: [str]):
-        result_notes = [note for note in self.data.values() if note.str_author == searched_author]
-        return result_notes
+        return [note for note in self.data.values() if note.str_author == searched_author]

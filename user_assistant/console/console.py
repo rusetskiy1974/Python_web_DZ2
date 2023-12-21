@@ -1,6 +1,9 @@
 from rich.console import Console as RichConsole
 from rich.table import Table
 from random import randint
+from prompt_toolkit import prompt
+from prompt_toolkit.completion import WordCompleter
+from prompt_toolkit.styles import Style
 
 console = RichConsole()
 
@@ -22,8 +25,20 @@ class Console:
         console.print('🤓', text, style='wheat1')
 
     @staticmethod
-    def input(text: str):
-        return console.input(prompt=f'{input_emojis[randint(0, len(input_emojis) - 1)]} [sky_blue3]{text}[/]', markup=True, emoji=True, password=False, stream=None)
+    def input(text: str, prompts: [str] = []):
+        style = Style.from_dict({
+            '': '#afffff',
+            'text': '#5f87ff',
+        })
+
+        message = [
+            ('class:emoji', f'{input_emojis[randint(0, len(input_emojis) - 1)]} '),
+            ('class:text', f'{text}'),
+        ]
+
+        completer = WordCompleter(prompts)
+
+        return prompt(message, completer=completer, style=style)
 
     @staticmethod
     def print(text: str, justify='left'):

@@ -26,7 +26,7 @@ from user_assistant.handlers.notes.show_all_notes import show_all_notes
 
 from user_assistant.console.console import Console
 
-STORAGE_PATH = Path('.') / Path('user_assistant') /  Path('databases')
+STORAGE_PATH = Path('.') / Path('user_assistant') / Path('databases')
 
 ADDRESS_BOOK_FIELDS = ['name', 'birthday', 'address', 'phones', 'mail']
 NOTE_FIELDS = ['author', 'text', 'tags', 'id', 'created_at']
@@ -37,13 +37,15 @@ book = AddressBook(address_book_storage.get())
 notes_storage = CSVStorage(STORAGE_PATH, 'notes.csv', NotesCSVSerializer, NOTE_FIELDS)
 notes = Notes(notes_storage.get())
 
+prompts = list(map(lambda name: getattr(COMMANDS, name), filter(lambda name: not name.startswith('__'), dir(COMMANDS))))
+
 
 def main():
     greeting()
 
     while True:
 
-        user_input = Console.input('Enter command: ').casefold()
+        user_input = Console.input('Enter command: ', prompts).casefold().strip()
 
         if user_input == COMMANDS.ADD_CONTACT:
             add_contact(book, address_book_storage)

@@ -16,7 +16,7 @@ def add_note(notes: Notes, storage: Type[Storage]):
     text = input_value('text',Text)
     tag = input_value('tag',Tag)
 
-    note_record = NoteRecord(author=author,text=text,tags=[tag])
+    note_record = NoteRecord(author=author, text=text, tags=[tag])
     notes.add_note(note_record)
     storage.update(notes.data.values())
     

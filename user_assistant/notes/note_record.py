@@ -8,12 +8,12 @@ from user_assistant.class_fields.id import ID
 
 
 class NoteRecord:
-    def __init__(self, author: Author, text: Text, tags: [Tag], note_id=ID(), created_at=DateTime(datetime.now())):
+    def __init__(self, author: Author, text: Text, tags: [Tag], note_id=None, created_at=None):
         self.author = author
         self.text = text
         self.tags = tags
-        self.id = note_id
-        self.created_at = created_at
+        self.id = note_id if note_id is not None else ID()
+        self.created_at = created_at if note_id is not None else DateTime(datetime.now())
 
     def __str__(self):
         return f"Note author: {self.author.value}, text: {self.text.value}, tags: {'; '.join(p.value for p in self.tags)}, created_at: {self.created_at}, id: ${self.id.value}"
