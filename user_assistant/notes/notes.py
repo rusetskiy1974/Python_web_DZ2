@@ -9,9 +9,6 @@ class Notes(UserDict):
     def add_note(self, note: NoteRecord):
         self.data[note.id.value] = note
 
-    def search_by_tags(self, searched_tags: [str]):
-        result_notes = [note for note in self.data.values() if set(searched_tags).issubset(note.str_tags)]
-        return result_notes
 
     def sort_by_tags(self):
         sorted_notes = sorted(self.data.values(), key=lambda note: ','.join(note.str_tags))
@@ -25,3 +22,25 @@ class Notes(UserDict):
 
     def search_by_author(self, searched_author: [str]):
         return [note for note in self.data.values() if note.str_author == searched_author]
+    
+    def search_by_tags(self, tag_name: str):
+        matching_notes=[]
+        for note in self.data.values():
+            for tag in note.str_tags:
+                if tag == tag_name.value:
+                    matching_notes.append(note)
+        return matching_notes
+    
+    def search_by_author(self, author: str):
+        matching_notes=[]
+        for note in self.data.values():
+            if note.str_author == author.value:
+                matching_notes.append(note)
+        return matching_notes
+
+
+    
+
+
+
+
