@@ -20,6 +20,7 @@ from user_assistant.serializers.notes.notes_csv_serializer import NotesCSVSerial
 from user_assistant.handlers.notes.add_note import add_note
 from user_assistant.handlers.notes.find_note import find_note
 from user_assistant.handlers.notes.remove_note import remove_note
+from user_assistant.handlers.notes.edit_note import edit_note
 
 from user_assistant.handlers.greeting import greeting
 from user_assistant.handlers.notes.show_all_notes import show_all_notes
@@ -95,6 +96,10 @@ def main():
 
         if user_input == COMMANDS.REMOVE_NOTE:
             remove_note(notes, notes_storage)
+            continue
+
+        if user_input == COMMANDS.EDIT_NOTE_NOTE:
+            edit_note(notes, notes_storage)
             continue
 
 
