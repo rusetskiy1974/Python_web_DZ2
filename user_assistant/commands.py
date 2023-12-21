@@ -8,7 +8,7 @@ SHOW_ALL_CONTACTS = 'show_all_contacts'
 SEARCH_CONTACT = 'search_contact'
 ADD_PHONE = 'add_phone'
 EDIT_PHONE = 'edit_phone'
-REMOVE_PHONE = 'remone_phone'
+REMOVE_PHONE = 'remove_phone'
 EXIT = 'exit'
 CLOSE = 'close'
 

@@ -21,4 +21,4 @@ def add_phone(book: AddressBook, storage: Type[Storage]):
     record.add_phone(new_phone)
     storage.update(book.data.values()) 
 
-    Console.print_table('Updated phone contact', address_book_titles, [get_address_book_row(record)])
+    Console.print_table('Updated contact phone', address_book_titles, [get_address_book_row(record)])

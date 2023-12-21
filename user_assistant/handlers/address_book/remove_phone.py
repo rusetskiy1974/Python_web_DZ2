@@ -22,6 +22,6 @@ def remove_phone(book: AddressBook, storage: Type[Storage]):
     if record.find_phone(phone):
         record.remove_phone(phone)
         storage.update(book.data.values()) 
-        Console.print_table('Updated phone contact', address_book_titles, [get_address_book_row(record)])
+        Console.print_table('Updated contact phone', address_book_titles, [get_address_book_row(record)])
     else:
         Console.print_error(f'Number {phone} is missing from the contact {name}')    
