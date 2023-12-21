@@ -3,5 +3,5 @@ from datetime import datetime
 
 
 class ID(Field):
-    def __init__(self, init_id=datetime.timestamp(datetime.now())):
-        super().__init__(init_id)
+    def __init__(self, init_id=None):
+        super().__init__(init_id if init_id is not None else datetime.timestamp(datetime.now()))

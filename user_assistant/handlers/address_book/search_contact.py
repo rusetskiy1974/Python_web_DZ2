@@ -4,7 +4,7 @@ from user_assistant.console.table_format.address_book_table import address_book_
 
 def search_contact(book):
     while True:
-        string = Console.input(f'Input contact name or phone:')
+        string = Console.input(f'Input contact name or phone: ')
         if string:
             break
         Console.print_error('Value is empty. Please try again')
