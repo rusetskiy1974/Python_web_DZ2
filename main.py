@@ -8,6 +8,9 @@ from user_assistant.handlers.address_book.find_contact import find_contact
 from user_assistant.handlers.address_book.show_birthday import show_birthday
 from user_assistant.handlers.address_book.show_all_contacts import show_all_contacts
 from user_assistant.handlers.address_book.search_contact import search_contact
+from user_assistant.handlers.address_book.add_phone import add_phone
+from user_assistant.handlers.address_book.edit_phone import edit_phone
+from user_assistant.handlers.address_book.remove_phone import remove_phone
 from user_assistant.handlers.sort_file.sort_file import sort_files
 from user_assistant.handlers.do_exit import do_exit
 
@@ -81,6 +84,19 @@ def main():
         if user_input == COMMANDS.SEARCH_CONTACT:
             search_contact(book)
             continue
+
+        if user_input == COMMANDS.ADD_PHONE:
+            add_phone(book)
+            continue
+
+        if user_input == COMMANDS.EDIT_PHONE:
+            edit_phone(book)
+            continue
+
+        if user_input == COMMANDS.REMOVE_PHONE:
+            remove_phone(book)
+            continue
+
 
         if user_input == COMMANDS.SORT_FILES:
             sort_files()
