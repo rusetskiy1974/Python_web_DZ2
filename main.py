@@ -86,15 +86,15 @@ def main():
             continue
 
         if user_input == COMMANDS.ADD_PHONE:
-            add_phone(book)
+            add_phone(book, address_book_storage)
             continue
 
         if user_input == COMMANDS.EDIT_PHONE:
-            edit_phone(book)
+            edit_phone(book, address_book_storage)
             continue
 
         if user_input == COMMANDS.REMOVE_PHONE:
-            remove_phone(book)
+            remove_phone(book, address_book_storage)
             continue
 
 
