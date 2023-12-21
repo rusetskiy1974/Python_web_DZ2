@@ -23,6 +23,6 @@ def edit_phone(book: AddressBook, storage: Type[Storage]):
         new_phone = input_value('phone', Phone) 
         record.edit_phone(phone, new_phone)
         storage.update(book.data.values()) 
-        Console.print_table('Updated contact', address_book_titles, [get_address_book_row(record)])
+        Console.print_table('Updated phone contact', address_book_titles, [get_address_book_row(record)])
     else:
         Console.print_error(f'Number {phone} is missing from the contact {name}')    
