@@ -2,7 +2,7 @@ from user_assistant.console.console import Console
 from user_assistant.console.table_format.address_book_table import address_book_titles, get_address_book_row
 
 
-def search_contact(book):
+def search_contacts(book):
     while True:
         string = Console.input(f'Input contact name or phone: ')
         if string:

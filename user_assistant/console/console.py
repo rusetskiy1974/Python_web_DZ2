@@ -10,7 +10,6 @@ console = RichConsole()
 table_colors = ['slate_blue1', 'magenta', 'chartreuse1', 'sea_green1', 'pale_turquoise1', 'yellow2', 'dark_sea_green3']
 input_emojis = ['🤩', '😃', '😂', '🤑', '🤗', '😜', '🤠', '🥸', '🤡', '🥳', '😍']
 
-
 class Console:
     @staticmethod
     def print_error(text: str):
@@ -41,8 +40,8 @@ class Console:
         return prompt(message, completer=completer, style=style, placeholder=placeholder)
 
     @staticmethod
-    def print(text: str, justify='left'):
-        console.print(text, justify=justify)
+    def print(text: str, justify='left', **kwargs):
+        console.print(text, justify=justify, **kwargs)
 
     @staticmethod
     def print_table(title: str, column_titles: [str], rows: []):

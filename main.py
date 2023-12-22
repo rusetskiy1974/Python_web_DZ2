@@ -7,7 +7,7 @@ from user_assistant.handlers.address_book.edit_contact import edit_contact
 from user_assistant.handlers.address_book.find_contact import find_contact
 from user_assistant.handlers.address_book.show_birthday import show_birthday
 from user_assistant.handlers.address_book.show_all_contacts import show_all_contacts
-from user_assistant.handlers.address_book.search_contact import search_contact
+from user_assistant.handlers.address_book.search_contact import search_contacts
 from user_assistant.handlers.address_book.add_phone import add_phone
 from user_assistant.handlers.address_book.edit_phone import edit_phone
 from user_assistant.handlers.address_book.remove_phone import remove_phone
@@ -32,6 +32,7 @@ from user_assistant.handlers.notes.remove_tags import remove_tags
 from user_assistant.handlers.notes.add_tags import add_tags
 from user_assistant.handlers.greeting import greeting
 from user_assistant.handlers.notes.show_all_notes import show_all_notes
+from user_assistant.handlers.help import help
 
 from user_assistant.console.console import Console
 
@@ -80,8 +81,8 @@ def main():
             show_all_contacts(book)
             continue
 
-        if user_input == COMMANDS.SEARCH_CONTACT:
-            search_contact(book)
+        if user_input == COMMANDS.SEARCH_CONTACTS:
+            search_contacts(book)
             continue
 
         if user_input == COMMANDS.ADD_PHONE:
@@ -150,6 +151,10 @@ def main():
 
         if user_input == COMMANDS.ADD_TAGS:
             add_tags(notes, notes_storage)
+            continue
+
+        if user_input == COMMANDS.HELP:
+            help()
             continue
  
 
