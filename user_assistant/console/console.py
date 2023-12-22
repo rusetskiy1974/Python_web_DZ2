@@ -7,7 +7,7 @@ from prompt_toolkit.styles import Style
 
 console = RichConsole()
 
-table_colors = ['slate_blue1', 'magenta', 'chartreuse1', 'sea_green1', 'pale_turquoise1', 'yellow2']
+table_colors = ['slate_blue1', 'magenta', 'chartreuse1', 'sea_green1', 'pale_turquoise1', 'yellow2', 'dark_sea_green3']
 input_emojis = ['🤩', '😃', '😂', '🤑', '🤗', '😜', '🤠', '🥸', '🤡', '🥳', '😍']
 
 
@@ -25,7 +25,7 @@ class Console:
         console.print('🤓', text, style='wheat1')
 
     @staticmethod
-    def input(text: str, prompts: [str] = []):
+    def input(text: str, prompts: [str] = [], placeholder=None):
         style = Style.from_dict({
             '': '#afffff',
             'text': '#5f87ff',
@@ -38,15 +38,19 @@ class Console:
 
         completer = WordCompleter(prompts)
 
-        return prompt(message, completer=completer, style=style)
+        return prompt(message, completer=completer, style=style, placeholder=placeholder)
 
     @staticmethod
     def print(text: str, justify='left'):
         console.print(text, justify=justify)
 
     @staticmethod
-    def print_table(title: str, column_titles: [str], rows: [[]]):
-        table = Table(title=title)
+    def print_table(title: str, column_titles: [str], rows: []):
+        if len(rows) == 0:
+            console.print('[i wheat1] There are no data by your request[/]', justify='center')
+            return console.print('[i wheat1]The table is empty🤦‍♂️[/]', justify='center')
+
+        table = Table(title=f'[i]{title}[/]')
 
         for index, title in enumerate(column_titles):
             table.add_column(title, style=table_colors[index], justify='center', vertical='top', min_width=15)
@@ -55,4 +59,3 @@ class Console:
             table.add_row(*row)
 
         console.print(table, justify='center')
-

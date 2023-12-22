@@ -11,8 +11,4 @@ def search_contact(book):
 
     records = book.search(string)
 
-    if records:
-        Console.print_table('Searched contacts', address_book_titles, list(map(get_address_book_row, records)))
-         
-    else:
-        Console.print_error(f'There is no any contact by your request')
+    Console.print_table('Searched contacts', address_book_titles, list(map(get_address_book_row, records)))

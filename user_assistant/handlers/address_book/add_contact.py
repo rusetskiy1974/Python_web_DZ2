@@ -16,12 +16,12 @@ from user_assistant.console.table_format.address_book_table import address_book_
 def add_contact(book: AddressBook, storage: Type[Storage]):
 
     name = input_value('name', Name)
-    date = input_value('date birthday', Date )
-    mail = input_value('email', Mail)
+    date = input_value('date birthday', Date, placeholder=Date.DATE_FORMAT_EXAMPLE)
+    mail = input_value('email', Mail, placeholder=Mail.MAIL_FORMAT_EXAMPLE)
     address = input_value('address', Address)
-    phone = input_value('phone', Phone)
+    phone = input_value('phone', Phone, placeholder=Phone.PHONE_FORMAT_EXAMPLE)
 
-    record = AddressBookRecord(name= name, birthday= date, mail= mail, address= address,  phones= [phone])
+    record = AddressBookRecord(name=name, birthday=date, mail=mail, address=address,  phones=[phone])
     book.add(record)
     storage.update(book.data.values())
 

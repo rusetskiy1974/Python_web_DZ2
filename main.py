@@ -23,19 +23,13 @@ from user_assistant.serializers.notes.notes_csv_serializer import NotesCSVSerial
 from user_assistant.handlers.notes.add_note import add_note
 from user_assistant.handlers.notes.find_note import find_note
 from user_assistant.handlers.notes.remove_note import remove_note
-
 from user_assistant.handlers.notes.search_notes_by_author import search_notes_by_author
 from user_assistant.handlers.notes.search_notes_by_tag import search_notes_by_tag
 from user_assistant.handlers.notes.edit_note import edit_note
 from user_assistant.handlers.notes.sort_by_tags import sort_by_tags
 from user_assistant.handlers.notes.sort_by_author import sort_by_author
- remove_tags
 from user_assistant.handlers.notes.remove_tags import remove_tags
-
 from user_assistant.handlers.notes.add_tags import add_tags
- 
-
-
 from user_assistant.handlers.greeting import greeting
 from user_assistant.handlers.notes.show_all_notes import show_all_notes
 
@@ -148,8 +142,7 @@ def main():
         if user_input == COMMANDS.SORT_BY_AUTHOR:
             sort_by_author(notes)
             continue
- remove_tags
-        
+
         if user_input == COMMANDS.REMOVE_TAGS:
             remove_tags(notes, notes_storage)
             continue
