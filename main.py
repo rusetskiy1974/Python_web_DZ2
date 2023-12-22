@@ -29,7 +29,6 @@ from user_assistant.handlers.notes.search_notes_by_tag import search_notes_by_ta
 from user_assistant.handlers.notes.edit_note import edit_note
 from user_assistant.handlers.notes.sort_by_tags import sort_by_tags
 from user_assistant.handlers.notes.sort_by_author import sort_by_author
- remove_tags
 from user_assistant.handlers.notes.remove_tags import remove_tags
 
 from user_assistant.handlers.notes.add_tags import add_tags
@@ -148,7 +147,7 @@ def main():
         if user_input == COMMANDS.SORT_BY_AUTHOR:
             sort_by_author(notes)
             continue
- remove_tags
+  
         
         if user_input == COMMANDS.REMOVE_TAGS:
             remove_tags(notes, notes_storage)
