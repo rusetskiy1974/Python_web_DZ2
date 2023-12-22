@@ -5,6 +5,8 @@ from prompt_toolkit import prompt
 from prompt_toolkit.completion import WordCompleter
 from prompt_toolkit.styles import Style
 
+import re
+
 console = RichConsole()
 
 table_colors = ['slate_blue1', 'magenta', 'chartreuse1', 'sea_green1', 'pale_turquoise1', 'yellow2', 'dark_sea_green3']
@@ -12,8 +14,21 @@ input_emojis = ['🤩', '😃', '😂', '🤑', '🤗', '😜', '🤠', '🥸', 
 
 class Console:
     @staticmethod
-    def print_error(text: str):
-        console.print('🤯 ', text, style='red')
+    def print_error(error: Exception | str):
+        error_text = str(error)
+
+        try:
+            result = re.findall(r'\[.*\]', error_text)
+
+            if result is not None and len(result) > 0:
+                updated_format = re.sub("[\[\]]", "", result[0])
+                formatted_text = error_text.replace(result[0], f'[bold deep_sky_blue1]{updated_format}[/]')
+                return console.print('🤯 ', formatted_text, style='red')
+        except:
+            return console.print('🤯 ', error_text, style='red')
+
+        return console.print('🤯 ', error_text, style='red')
+
 
     @staticmethod
     def print_success(text: str):
