@@ -35,8 +35,8 @@ from user_assistant.console.console import Console
 
 STORAGE_PATH = Path('.') / Path('user_assistant') / Path('databases')
 
-ADDRESS_BOOK_FIELDS = ['name', 'birthday', 'address', 'phones', 'mail']
-NOTE_FIELDS = ['author', 'text', 'tags', 'id', 'created_at']
+ADDRESS_BOOK_FIELDS = ['name', 'birthday', 'address', 'phones', 'mail', 'updated_at', 'created_at']
+NOTE_FIELDS = ['author', 'text', 'tags', 'id', 'updated_at', 'created_at']
 
 address_book_storage = CSVStorage(STORAGE_PATH, 'address_book.csv', AddressBookCSVSerializer, ADDRESS_BOOK_FIELDS)
 book = AddressBook(address_book_storage.get())

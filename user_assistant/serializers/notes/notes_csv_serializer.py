@@ -16,6 +16,7 @@ class NotesCSVSerializer(Serializer):
         return {
             "id": record.id.value,
             "created_at": str(record.created_at),
+            "updated_at": str(record.updated_at),
             "author": record.author.value,
             "text": record.text.value,
             "tags": cls.TAG_SEPARATOR.join(record.str_tags),
@@ -26,8 +27,9 @@ class NotesCSVSerializer(Serializer):
     def deserialize(cls, record: NoteRecord):
         note_id = ID(record['id'])
         created_at = DateTime(datetime.strptime(record['created_at'], DateTime.DATE_TIME_FORMAT))
+        updated_at = DateTime(datetime.strptime(record['updated_at'], DateTime.DATE_TIME_FORMAT))
         author = Author(record['author'])
         text = Text(record['text'])
         tags = list(map(lambda tag: Tag(tag), record['tags'].split(cls.TAG_SEPARATOR)))
 
-        return NoteRecord(author=author, text=text, tags=tags, note_id=note_id, created_at=created_at)
+        return NoteRecord(author=author, text=text, tags=tags, note_id=note_id, created_at=created_at, updated_at=updated_at)

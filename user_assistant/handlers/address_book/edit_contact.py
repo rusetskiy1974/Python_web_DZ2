@@ -16,7 +16,6 @@ FIELDS_CLASS = {'name': Name, 'birthday': Date, 'email': Mail, 'address': Addres
 
 
 def edit_contact(book: AddressBook, storage: Type[Storage]):
-    Console.print_tip('Press “Enter” with empty value to skip')
     while True:
         name = input_value('contact name', Name)
         record = book.find(name.value)
@@ -24,6 +23,8 @@ def edit_contact(book: AddressBook, storage: Type[Storage]):
             break
         else:
             Console.print_error('Input existing name')
+
+    Console.print_tip('Press “Enter” with empty value to skip')
 
     for field in FIELDS_CLASS.keys():  
             volume = input_value(f'new {field}', FIELDS_CLASS[field], True)
