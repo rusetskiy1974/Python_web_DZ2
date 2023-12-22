@@ -157,5 +157,7 @@ def main():
             help()
             continue
 
+        Console.print_tip('Enter [bold deep_sky_blue1]help[/] to see all possible commands')
+
 if __name__ == '__main__':
     main()
