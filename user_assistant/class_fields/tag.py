@@ -7,4 +7,4 @@ class Tag(Field):
 
     @Field.value.setter
     def value(self, value: str):
-        self._Field__value = value
+        self._Field__value = value.casefold()

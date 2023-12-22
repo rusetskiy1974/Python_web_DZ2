@@ -13,7 +13,6 @@ from user_assistant.console.table_format.notes_table import note_titles, get_not
 NOTES_CLASS = {'author': Author, 'text': Text}
 
 def edit_note(notes: Notes, storage: Type[Storage]):
-    Console.print_tip('Press “Enter” with empty value to skip')
     while True:
         value_id = input_value(f'note ID: ', str, True)
         
@@ -25,6 +24,8 @@ def edit_note(notes: Notes, storage: Type[Storage]):
                 Console.print_error('Input existing ID')
         else:
             return
+
+    Console.print_tip('Press “Enter” with empty value to skip')
 
     for field in NOTES_CLASS:
         new_volume = input_value(f'new value for {field}', NOTES_CLASS[field], True) 

@@ -7,7 +7,7 @@ from user_assistant.handlers.address_book.edit_contact import edit_contact
 from user_assistant.handlers.address_book.find_contact import find_contact
 from user_assistant.handlers.address_book.show_birthday import show_birthday
 from user_assistant.handlers.address_book.show_all_contacts import show_all_contacts
-from user_assistant.handlers.address_book.search_contact import search_contact
+from user_assistant.handlers.address_book.search_contact import search_contacts
 from user_assistant.handlers.address_book.add_phone import add_phone
 from user_assistant.handlers.address_book.edit_phone import edit_phone
 from user_assistant.handlers.address_book.remove_phone import remove_phone
@@ -23,27 +23,23 @@ from user_assistant.serializers.notes.notes_csv_serializer import NotesCSVSerial
 from user_assistant.handlers.notes.add_note import add_note
 from user_assistant.handlers.notes.find_note import find_note
 from user_assistant.handlers.notes.remove_note import remove_note
-
 from user_assistant.handlers.notes.search_notes_by_author import search_notes_by_author
 from user_assistant.handlers.notes.search_notes_by_tag import search_notes_by_tag
 from user_assistant.handlers.notes.edit_note import edit_note
 from user_assistant.handlers.notes.sort_by_tags import sort_by_tags
 from user_assistant.handlers.notes.sort_by_author import sort_by_author
 from user_assistant.handlers.notes.remove_tags import remove_tags
-
 from user_assistant.handlers.notes.add_tags import add_tags
- 
-
-
 from user_assistant.handlers.greeting import greeting
 from user_assistant.handlers.notes.show_all_notes import show_all_notes
+from user_assistant.handlers.help import help
 
 from user_assistant.console.console import Console
 
 STORAGE_PATH = Path('.') / Path('user_assistant') / Path('databases')
 
-ADDRESS_BOOK_FIELDS = ['name', 'birthday', 'address', 'phones', 'mail']
-NOTE_FIELDS = ['author', 'text', 'tags', 'id', 'created_at']
+ADDRESS_BOOK_FIELDS = ['name', 'birthday', 'address', 'phones', 'mail', 'updated_at', 'created_at']
+NOTE_FIELDS = ['author', 'text', 'tags', 'id', 'updated_at', 'created_at']
 
 address_book_storage = CSVStorage(STORAGE_PATH, 'address_book.csv', AddressBookCSVSerializer, ADDRESS_BOOK_FIELDS)
 book = AddressBook(address_book_storage.get())
@@ -85,8 +81,8 @@ def main():
             show_all_contacts(book)
             continue
 
-        if user_input == COMMANDS.SEARCH_CONTACT:
-            search_contact(book)
+        if user_input == COMMANDS.SEARCH_CONTACTS:
+            search_contacts(book)
             continue
 
         if user_input == COMMANDS.ADD_PHONE:
@@ -147,8 +143,7 @@ def main():
         if user_input == COMMANDS.SORT_BY_AUTHOR:
             sort_by_author(notes)
             continue
-  
-        
+
         if user_input == COMMANDS.REMOVE_TAGS:
             remove_tags(notes, notes_storage)
             continue
@@ -157,8 +152,12 @@ def main():
         if user_input == COMMANDS.ADD_TAGS:
             add_tags(notes, notes_storage)
             continue
- 
 
+        if user_input == COMMANDS.HELP:
+            help()
+            continue
+
+        Console.print_tip('Enter [bold deep_sky_blue1]help[/] to see all possible commands')
 
 if __name__ == '__main__':
     main()

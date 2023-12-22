@@ -5,14 +5,14 @@ from user_assistant.console.table_format.address_book_table import address_book_
 def show_birthday(book):
     while True:
         try:
-            days = int(Console.input(f'Enter volume days: '))
+            days = int(Console.input(f'Enter number of days: '))
             if days in range(1,365):
                 break
             else:
-                Console.print_error('Days may be in interval 1-365')
+                Console.print_error('Days must be in interval 1-365')
                 continue
         except:
-            Console.print_error('Days may be integer volume')
+            Console.print_error('Days may be an integer')
 
     records = book.show_birthday(days)
 

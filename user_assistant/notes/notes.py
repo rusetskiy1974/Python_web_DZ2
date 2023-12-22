@@ -25,11 +25,11 @@ class Notes(UserDict):
 
     
     def search_by_tags(self, tag_name: str):
-        return list(filter(lambda note: tag_name in note.str_tags, self.data.values()))
+        return list(filter(lambda note: tag_name.casefold() in note.str_tags, self.data.values()))
 
 
     def search_by_author(self, author: str):
-        return list(filter(lambda note: note.str_author == author, self.data.values()))
+        return list(filter(lambda note: note.str_author.casefold() == author.casefold(), self.data.values()))
 
 
     

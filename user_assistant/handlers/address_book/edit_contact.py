@@ -11,26 +11,25 @@ from user_assistant.console.console import Console
 from user_assistant.console.table_format.address_book_table import address_book_titles, get_address_book_row
 
 
-FIELDS_CLASS = {'name': Name, 'birthday': Date, 'email': Mail, 'address': Address}
+FIELDS_CLASS = {'name': (Name, None), 'birthday': (Date, Date.DATE_FORMAT_EXAMPLE), 'email': (Mail, Mail.MAIL_FORMAT_EXAMPLE), 'address': (Address, None)}
 
 
 def edit_contact(book: AddressBook, storage: Type[Storage]):
     Console.print_tip('Press “Enter” with empty value to skip')
-    while True:
-        name = input_value('contact name', Name, True)
-        
-        if name:
-            record = book.find(name.value)
-            if record:
-                break
-            else:
-                Console.print_error('Input existing name')
 
-        else:
-            return        
+    name = Console.input('Enter contact name: ')
 
-    for field in FIELDS_CLASS.keys():  
-            volume = input_value(f'new {field}', FIELDS_CLASS[field], True)
+    if not name:
+        return
+
+    record = book.find(name)
+
+    if record is None:
+        return Console.print_error('Input existing name')
+
+    for field in FIELDS_CLASS.keys():
+            field_class, placeholder = FIELDS_CLASS[field]
+            volume = input_value(f'new {field}', field_class, True, placeholder=placeholder)
             
             if field == 'birthday' and volume:
                 record.edit_birthday(volume)
@@ -43,7 +42,6 @@ def edit_contact(book: AddressBook, storage: Type[Storage]):
                 record.edit_name(volume)
                 book.add(record)
             
-      
     storage.update(book.data.values())
 
     Console.print_table('Updated contact', address_book_titles, [get_address_book_row(record)])

@@ -11,7 +11,7 @@ class AddressBook(UserDict):
         self.pagination_size = pagination_size
         self.pagination_offset = 0
 
-        self.data = {record.name.value: record for record in records}
+        self.data = {record.name.value.casefold(): record for record in records}
 
     def __iter__(self):
         return self
@@ -34,7 +34,7 @@ class AddressBook(UserDict):
         return self.data
 
     def find(self, name: str) -> AddressBookRecord | None:
-        return self.data.get(name, None)
+        return self.data.get(name.casefold(), None)
 
     def delete(self, name: str):
         self.data.pop(name, None)
