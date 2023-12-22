@@ -16,7 +16,7 @@ class Date(Field):
         result = re.match(r'\d{2}\.\d{2}\.\d{4}', value)
 
         if result is None:
-            raise ValueError(f'The date is incorrect. The format should be {cls.DATE_FORMAT_EXAMPLE}')
+            raise ValueError(f'The date is incorrect. The format should be [{cls.DATE_FORMAT_EXAMPLE}]')
 
 
     @Field.value.setter

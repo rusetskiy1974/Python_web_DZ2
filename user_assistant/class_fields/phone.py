@@ -13,10 +13,10 @@ class Phone(Field):
         try:
             phone_number = parse(value)
         except:
-            raise ValueError(f'The phone is incorrect. The format should be {cls.PHONE_FORMAT_EXAMPLE}')
+            raise ValueError(f'The phone is incorrect. The format should be [{cls.PHONE_FORMAT_EXAMPLE}]')
 
         if not is_valid_number(phone_number):
-            raise ValueError(f'The phone is incorrect. The format should be {cls.PHONE_FORMAT_EXAMPLE}')
+            raise ValueError(f'The phone is incorrect. The format should be [{cls.PHONE_FORMAT_EXAMPLE}]')
 
     @Field.value.setter
     def value(self, value: str):
