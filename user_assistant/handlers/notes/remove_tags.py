@@ -15,19 +15,21 @@ def remove_tags(notes: Notes, storage: Storage):
     
     Console.print_table(f'Note updated with removed tags', note_titles, [get_notes_row(note)])
     while True:
-        tags_input = input_value('selected tags to remove (separate by comma)', str, True)
+        tags_input = input_value('selected tags to remove (separate by comma)', str, True).strip().casefold()
         
         if tags_input:
-            tags_to_remove = [Tag(tag.strip()) for tag in tags_input.split(',')]
-            if set(tags_to_remove).issubset(set(note.tags)):
-                Console.print_error(f'Tag {tag} missing in tags')
+            tags_to_remove = set(filter(lambda tag: len(tag) > 0,  tags_input.split(',')))
+            
+            if not set(note.str_tags).issuperset(tags_to_remove):
+                Console.print_error(f'Tag missing in tags')
                 break
             else:
                 for tag in tags_to_remove:
                     if tag in note.tags:
                         note.remove_tag(tag)
                 storage.update(notes.data.values())
-                Console.print_table(f'Note updated with removed tags', note_titles, [get_notes_row(note)])
+                return Console.print_table(f'Note updated with removed tags', note_titles, [get_notes_row(note)])
+
         else:
             break
 
