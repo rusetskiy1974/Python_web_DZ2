@@ -5,7 +5,7 @@ from user_assistant.console.console import Console
 
 def sort_files():
     try:
-        folder_for_scan = input('Enter folder for scan: ')
+        folder_for_scan = Console.input('Enter folder for scan: ')
         sorter = FileSorter(Path(folder_for_scan))
         sorter.sort_files()
 

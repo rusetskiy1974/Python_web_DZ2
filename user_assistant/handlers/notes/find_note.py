@@ -8,7 +8,6 @@ def find_note(notes: Notes):
 
     result = notes.find(value)
     
-    
     if result is not None:
         return Console.print_table(f'Found note', note_titles, [get_notes_row(result)])
 

@@ -1,7 +1,7 @@
 from user_assistant.notes.note_record import NoteRecord
 
 
-note_titles = ["🤠 Author", "📝 Text", "🖇 Tags", "🎱 ID", "📅 Created at"]
+note_titles = ["🤠 Author", "📝 Text", "🖇 Tags", "🎱 ID", "📅 Updated at", "📅 Created at"]
 
 
 def get_notes_row(record: NoteRecord):
@@ -10,5 +10,6 @@ def get_notes_row(record: NoteRecord):
         record.text.value,
         ', '.join(record.str_tags),
         str(record.id),
+        str(record.updated_at),
         str(record.created_at),
     ]

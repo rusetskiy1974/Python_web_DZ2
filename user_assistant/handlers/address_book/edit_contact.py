@@ -2,7 +2,6 @@ from typing import Type
 
 from user_assistant.address_book.address_book import AddressBook
 from user_assistant.class_fields.name import Name
-from user_assistant.class_fields.phone import Phone
 from user_assistant.class_fields.date import Date
 from user_assistant.class_fields.address import Address
 from user_assistant.class_fields.mail import Mail
@@ -12,21 +11,25 @@ from user_assistant.console.console import Console
 from user_assistant.console.table_format.address_book_table import address_book_titles, get_address_book_row
 
 
-FIELDS_CLASS = {'name': Name, 'birthday': Date, 'email': Mail, 'address': Address, 'phone': Phone}
+FIELDS_CLASS = {'name': (Name, None), 'birthday': (Date, Date.DATE_FORMAT_EXAMPLE), 'email': (Mail, Mail.MAIL_FORMAT_EXAMPLE), 'address': (Address, None)}
 
 
 def edit_contact(book: AddressBook, storage: Type[Storage]):
     Console.print_tip('Press “Enter” with empty value to skip')
-    while True:
-        name = input_value('contact name', Name)
-        record = book.find(name.value)
-        if record:
-            break
-        else:
-            Console.print_error('Input existing name')
 
-    for field in FIELDS_CLASS.keys():  
-            volume = input_value(f'new {field}', FIELDS_CLASS[field], True)
+    name = Console.input('Enter contact name: ')
+
+    if not name:
+        return
+
+    record = book.find(name)
+
+    if record is None:
+        return Console.print_error('Input existing name')
+
+    for field in FIELDS_CLASS.keys():
+            field_class, placeholder = FIELDS_CLASS[field]
+            volume = input_value(f'new {field}', field_class, True, placeholder=placeholder)
             
             if field == 'birthday' and volume:
                 record.edit_birthday(volume)
@@ -38,21 +41,7 @@ def edit_contact(book: AddressBook, storage: Type[Storage]):
                 book.delete(str(record.name))
                 record.edit_name(volume)
                 book.add(record)
-            elif field == 'phone' and volume:
-                while True:
-                    phone_action = Console.input(f'Enter command - remove(r)/edit(e)/add(a): ')
-                    if phone_action == 'r':
-                        record.remove_phone(volume)
-                        break
-                    elif phone_action == 'a':
-                        record.add_phone(volume)
-                        break
-                    elif phone_action == 'e':                 
-                        old_phone = input_value('old phone number', Phone)
-                        record.edit_phone(str(old_phone), str(volume)) 
-                        break
-                    Console.print_error('Unknown command. Enter command - remove(r)/edit(e)/add(a): ')
-      
+            
     storage.update(book.data.values())
 
     Console.print_table('Updated contact', address_book_titles, [get_address_book_row(record)])
