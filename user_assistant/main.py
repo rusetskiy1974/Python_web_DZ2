@@ -137,7 +137,7 @@ def main():
             sort_notes_by_tags(notes)
             continue
 
-        if user_input == COMMANDS.SORT_NOTE_BY_AUTHOR:
+        if user_input == COMMANDS.SORT_NOTES_BY_AUTHOR:
             sort_notes_by_author(notes)
             continue
 
