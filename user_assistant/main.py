@@ -26,8 +26,8 @@ from .handlers.notes.remove_note import remove_note
 from .handlers.notes.search_notes_by_author import search_notes_by_author
 from .handlers.notes.search_notes_by_tag import search_notes_by_tag
 from .handlers.notes.edit_note import edit_note
-from .handlers.notes.sort_by_tags import sort_by_tags
-from .handlers.notes.sort_by_author import sort_by_author
+from .handlers.notes.sort_notes_by_tags import sort_notes_by_tags
+from .handlers.notes.sort_notes_by_author import sort_notes_by_author
 from .handlers.notes.remove_tags import remove_tags
 from .handlers.notes.add_tags import add_tags
 from .handlers.greeting import greeting
@@ -133,12 +133,12 @@ def main():
             edit_note(notes, notes_storage)
             continue
 
-        if user_input == COMMANDS.SORT_BY_TAGS:
-            sort_by_tags(notes)
+        if user_input == COMMANDS.SORT_NOTES_BY_TAGS:
+            sort_notes_by_tags(notes)
             continue
 
-        if user_input == COMMANDS.SORT_BY_AUTHOR:
-            sort_by_author(notes)
+        if user_input == COMMANDS.SORT_NOTE_BY_AUTHOR:
+            sort_notes_by_author(notes)
             continue
 
         if user_input == COMMANDS.REMOVE_TAGS:
