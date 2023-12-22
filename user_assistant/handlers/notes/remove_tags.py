@@ -19,6 +19,8 @@ def remove_tags(notes: Notes, storage: Storage):
     for tag in tags_to_remove:
         if tag in note.tags:
             note.remove_tag(tag)
+        else:
+            Console.print_error(f'Tag {tag} missing in tags')   
 
     storage.update(notes.data.values())
 
