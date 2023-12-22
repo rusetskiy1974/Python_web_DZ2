@@ -14,7 +14,7 @@ NOTES_CLASS = {'author': Author, 'text': Text}
 
 def edit_note(notes: Notes, storage: Type[Storage]):
     while True:
-        value_id = input_value(f'note ID: ', str, True)
+        value_id = input_value(f'note ID', str)
         
         if value_id:
             existing_note = notes.find(value_id)

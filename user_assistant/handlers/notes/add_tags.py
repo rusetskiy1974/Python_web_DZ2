@@ -6,18 +6,17 @@ from user_assistant.handlers.input_value import input_value
 from user_assistant.console.table_format.notes_table import note_titles, get_notes_row
 
 def add_tags(notes: Notes, storage: Storage):
-    note_id = input_value('Enter note ID', str)
+    note_id = input_value('note ID', str)
     note = notes.find(note_id)
 
     if note is None:
-        Console.print(f"No note found with ID {note_id}")
+        Console.print_error(f"No note found with ID {note_id}")
         return
 
-    tags_input = input_value('Enter new tags (separate by comma)', str)
-    new_tags = [Tag(tag.strip()) for tag in tags_input.split(',')]
-
+    tags_input = input_value('new tags (separate by comma)', str).strip().casefold()
+    new_tags = filter(lambda tag: len(tag) > 0,  tags_input.split(','))
     for tag in new_tags:
-        note.add_tag(tag)
+        note.add_tag(Tag(tag))
 
     storage.update(notes.data.values())
 

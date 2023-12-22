@@ -26,8 +26,8 @@ notes_documentation = [
     [COMMANDS.SHOW_ALL_NOTES, '', 'Show all notes'],
     [COMMANDS.SEARCH_BY_TAG, 'tag', 'Search notes by tag'],
     [COMMANDS.SEARCH_BY_AUTHOR, 'author', 'Search notes by author'],
-    [COMMANDS.SORT_BY_TAGS, '', 'Sort notes by tags'],
-    [COMMANDS.SORT_BY_AUTHOR, '', 'Sort notes by author'],
+    [COMMANDS.SORT_NOTES_BY_TAGS, '', 'Sort notes by tags'],
+    [COMMANDS.SORT_NOTES_BY_AUTHOR, '', 'Sort notes by author'],
 ]
 
 sort_files_documentation = [
