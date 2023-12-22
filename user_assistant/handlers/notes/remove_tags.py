@@ -10,7 +10,7 @@ def remove_tags(notes: Notes, storage: Storage):
     note = notes.find(note_id)
 
     if note is None:
-        Console.print(f"No note found with ID {note_id}")
+        Console.print_error(f"No note found with ID {note_id}")
         return
     
     Console.print_table(f'Note updated with removed tags', note_titles, [get_notes_row(note)])
@@ -20,7 +20,7 @@ def remove_tags(notes: Notes, storage: Storage):
         if tags_input:
             tags_to_remove = set(filter(lambda tag: len(tag) > 0,  tags_input.split(',')))
             
-            if not set(note.str_tags).issuperset(tags_to_remove):
+            if  set(note.str_tags).isdisjoint(tags_to_remove):
                 Console.print_error(f'Tag missing in tags')
                 break
             else:
