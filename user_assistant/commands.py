@@ -6,6 +6,9 @@ SHOW_BIRTHDAY = 'show_birthday'
 SORT_FILES = 'sort_files'
 SHOW_ALL_CONTACTS = 'show_all_contacts'
 SEARCH_CONTACT = 'search_contact'
+ADD_PHONE = 'add_phone'
+EDIT_PHONE = 'edit_phone'
+REMOVE_PHONE = 'remove_phone'
 EXIT = 'exit'
 CLOSE = 'close'
 
@@ -19,5 +22,10 @@ SEARCH_BY_AUTHOR = 'search_by_author'
 EDIT_NOTE = 'edit_note'
 SORT_BY_TAGS = 'sort_by_tags'
 SORT_BY_AUTHOR = 'sort_by_author'
+ remove_tags
+REMOVE_TAGS = 'remove_tags'
+
+ADD_TAGS = 'add_tags'
+ 
 
 

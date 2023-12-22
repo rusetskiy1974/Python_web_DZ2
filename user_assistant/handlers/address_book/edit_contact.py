@@ -2,7 +2,6 @@ from typing import Type
 
 from user_assistant.address_book.address_book import AddressBook
 from user_assistant.class_fields.name import Name
-from user_assistant.class_fields.phone import Phone
 from user_assistant.class_fields.date import Date
 from user_assistant.class_fields.address import Address
 from user_assistant.class_fields.mail import Mail
@@ -12,7 +11,7 @@ from user_assistant.console.console import Console
 from user_assistant.console.table_format.address_book_table import address_book_titles, get_address_book_row
 
 
-FIELDS_CLASS = {'name': Name, 'birthday': Date, 'email': Mail, 'address': Address, 'phone': Phone}
+FIELDS_CLASS = {'name': Name, 'birthday': Date, 'email': Mail, 'address': Address}
 
 
 def edit_contact(book: AddressBook, storage: Type[Storage]):
@@ -39,20 +38,7 @@ def edit_contact(book: AddressBook, storage: Type[Storage]):
                 book.delete(str(record.name))
                 record.edit_name(volume)
                 book.add(record)
-            elif field == 'phone' and volume:
-                while True:
-                    phone_action = Console.input(f'Enter command - remove(r)/edit(e)/add(a): ')
-                    if phone_action == 'r':
-                        record.remove_phone(volume)
-                        break
-                    elif phone_action == 'a':
-                        record.add_phone(volume)
-                        break
-                    elif phone_action == 'e':                 
-                        old_phone = input_value('old phone number', Phone)
-                        record.edit_phone(str(old_phone), str(volume)) 
-                        break
-                    Console.print_error('Unknown command. Enter command - remove(r)/edit(e)/add(a): ')
+            
       
     storage.update(book.data.values())
 
