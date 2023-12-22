@@ -16,6 +16,10 @@ from user_assistant.console.table_format.address_book_table import address_book_
 def add_contact(book: AddressBook, storage: Type[Storage]):
 
     name = input_value('name', Name)
+
+    if book.find(name.value) is not None:
+        return Console.print_error(f'Contact {name.value} is already exist')
+
     date = input_value('date birthday', Date, placeholder=Date.DATE_FORMAT_EXAMPLE)
     mail = input_value('email', Mail, placeholder=Mail.MAIL_FORMAT_EXAMPLE)
     address = input_value('address', Address)

@@ -29,7 +29,7 @@ class AddressBook(UserDict):
         raise StopIteration
 
     def add(self, record: AddressBookRecord):
-        self.data[record.name.value] = record
+        self.data[record.name.value.casefold()] = record
 
         return self.data
 
@@ -37,7 +37,7 @@ class AddressBook(UserDict):
         return self.data.get(name.casefold(), None)
 
     def delete(self, name: str):
-        self.data.pop(name, None)
+        self.data.pop(name.casefold(), None)
 
         return self.data
 
@@ -50,7 +50,7 @@ class AddressBook(UserDict):
 
     def search(self, value: str):
         return list(filter(
-            lambda record: value.casefold() in record.name.value.casefold() or self.is_existing_in_phone(value, record),
+            lambda record: value.casefold() in record.name.value or self.is_existing_in_phone(value, record),
             self.data.values()
         ))
     
@@ -59,7 +59,3 @@ class AddressBook(UserDict):
             lambda record: AddressBookRecord.days_to_birthday(record) <= value,
             self.data.values()
         ))
-         
-
-
-address_book = AddressBook()
