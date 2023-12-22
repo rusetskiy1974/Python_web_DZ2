@@ -28,7 +28,13 @@ def edit_note(notes: Notes, storage: Type[Storage]):
     Console.print_tip('Press “Enter” with empty value to skip')
 
     for field in NOTES_CLASS:
-        new_volume = input_value(f'new value for {field}', NOTES_CLASS[field], True) 
+
+        if field == 'author':
+            volume = str(existing_note.author)
+        if field == 'text':  
+            volume = str(existing_note.text)  
+
+        new_volume = input_value(f'new value for {field}', NOTES_CLASS[field], True, old_value=volume) 
 
         if field == 'author' and new_volume:
             existing_note.edit_author(new_volume)
