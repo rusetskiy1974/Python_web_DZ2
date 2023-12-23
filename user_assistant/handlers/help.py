@@ -24,8 +24,8 @@ notes_documentation = [
     [COMMANDS.ADD_TAGS, 'id, tags', 'Add tags of note by id'],
     [COMMANDS.REMOVE_TAGS, 'id, tags', 'Remove tags of note by id'],
     [COMMANDS.SHOW_ALL_NOTES, '', 'Show all notes'],
-    [COMMANDS.SEARCH_BY_TAG, 'tag', 'Search notes by tag'],
-    [COMMANDS.SEARCH_BY_AUTHOR, 'author', 'Search notes by author'],
+    [COMMANDS.SEARCH_NOTES_BY_TAG, 'tag', 'Search notes by tag'],
+    [COMMANDS.SEARCH_NOTES_BY_AUTHOR, 'author', 'Search notes by author'],
     [COMMANDS.SORT_NOTES_BY_TAGS, '', 'Sort notes by tags'],
     [COMMANDS.SORT_NOTES_BY_AUTHOR, '', 'Sort notes by author'],
 ]
