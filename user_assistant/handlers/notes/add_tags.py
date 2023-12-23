@@ -6,7 +6,14 @@ from user_assistant.handlers.input_value import input_value
 from user_assistant.console.table_format.notes_table import note_titles, get_notes_row
 
 def add_tags(notes: Notes, storage: Storage):
-    note_id = input_value('note ID', str)
+    Console.print_tip('Press “Enter” with empty value to skip')
+    while True:
+        note_id = input_value('note ID', str, True)
+        if not note_id:
+            return
+        else:
+            break
+    
     note = notes.find(note_id)
 
     if note is None:
@@ -15,6 +22,7 @@ def add_tags(notes: Notes, storage: Storage):
 
     tags_input = input_value('new tags (separate by comma)', str).strip().casefold()
     new_tags = filter(lambda tag: len(tag) > 0,  tags_input.split(','))
+    
     for tag in new_tags:
         note.add_tag(Tag(tag))
 
