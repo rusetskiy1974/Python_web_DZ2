@@ -9,13 +9,19 @@ from user_assistant.console.table_format.address_book_table import address_book_
 
 
 def remove_contact(book: AddressBook, storage: Type[Storage]):
-    name = input_value('name', Name)
-    record = book.find(name.value)
+    Console.print_tip('Press “Enter” with empty value to skip')
+    while True:
+        name = input_value('name', Name, True)
+        if not name:
+            return
+        record = book.find(name.value)
+        
+        if record is None:
+            Console.print_error('Input existing name')
+        else:
+            break    
+        
+    book.delete(name.value)
+    storage.update(book.data.values())
+    return Console.print_table('Removed contact', address_book_titles, [get_address_book_row(record)])
     
-    if record is not None:
-        book.delete(name.value)
-        storage.update(book.data.values())
-        Console.print_success(f'Contact {name} removed')
-        return
-
-    Console.print_table('Removed contact', address_book_titles, [get_address_book_row(record)])

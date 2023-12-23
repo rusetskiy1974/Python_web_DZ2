@@ -6,11 +6,15 @@ from user_assistant.console.table_format.address_book_table import address_book_
 
 
 def find_contact(book: AddressBook):
-    name = input_value('name', Name)
+    Console.print_tip('Press “Enter” with empty value to skip')
+    while True:
+        name = input_value('contact name', Name, True)
 
-    record = book.find(name.value)
+        if not name:
+            return
+        record = book.find(name.value)
 
-    if record is not None:
-        return Console.print_table('Found contact', address_book_titles, [get_address_book_row(record)])
-
-    Console.print_error(f'There is no any contact named: {name}')
+        if record:
+            return Console.print_table('Found contact', address_book_titles, [get_address_book_row(record)])
+        else:
+            return Console.print_error(f'There is no any contact named: {name}')

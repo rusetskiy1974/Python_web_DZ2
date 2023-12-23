@@ -9,14 +9,18 @@ from user_assistant.console.console import Console
 from user_assistant.console.table_format.address_book_table import address_book_titles, get_address_book_row
 
 def remove_phone(book: AddressBook, storage: Type[Storage]):
+    Console.print_tip('Press “Enter” with empty value to skip')
     while True:
-        name = input_value('contact name', Name)
+        name = input_value('contact name', Name, True)
+        if not name:
+            return
         record = book.find(name.value)
         if record:
             break
         else:
             Console.print_error('Input existing name')
-
+            
+    Console.print_table('Select contact phone', address_book_titles, [get_address_book_row(record)])
     phone = input_value('phone', Phone, placeholder=Phone.PHONE_FORMAT_EXAMPLE)
 
     if record.find_phone(phone):
