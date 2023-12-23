@@ -6,7 +6,7 @@ def show_birthday(book):
     while True:
         try:
             days = int(Console.input(f'Enter number of days: '))
-            if days in range(1,365):
+            if days in range(1,366):
                 break
             else:
                 Console.print_error('Days must be in interval 1-365')

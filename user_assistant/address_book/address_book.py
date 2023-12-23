@@ -50,7 +50,7 @@ class AddressBook(UserDict):
 
     def search(self, value: str):
         return list(filter(
-            lambda record: value.casefold() in record.name.value or self.is_existing_in_phone(value, record),
+            lambda record: value.casefold() in record.name.value.casefold() or self.is_existing_in_phone(value, record),
             self.data.values()
         ))
     
