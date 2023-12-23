@@ -28,6 +28,8 @@ def edit_contact(book: AddressBook, storage: Type[Storage]):
 
         if record is None:
             Console.print_error('Input existing name')
+        else:
+            break    
      
     for field in FIELDS_CLASS.keys():
             if field ==  'name':
