@@ -5,7 +5,6 @@ import pyperclip
 def write(old_value):
     print(f'Change old {old_value} :', end='')
     pyperclip.copy(old_value) 
-    pyperclip.paste()
     keyboard.press('ctrl+v') 
     keyboard.release('ctrl+v')
     result = input()
@@ -17,7 +16,7 @@ def input_value(value: str, class_field: classmethod, is_edit=False, old_value =
     while True:
         if old_value:
             result = write(old_value)
-                       
+              
         else:    
             result = Console.input(f'Enter {value}: ', placeholder=placeholder).strip()
         if result == '' and is_edit:
