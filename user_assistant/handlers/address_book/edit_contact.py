@@ -26,7 +26,7 @@ def edit_contact(book: AddressBook, storage: Type[Storage]):
 
     if record is None:
         return Console.print_error('Input existing name')
-
+     
     for field in FIELDS_CLASS.keys():
             if field ==  'name':
                 old_value = str(record.name)

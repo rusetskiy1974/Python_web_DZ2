@@ -2,20 +2,22 @@ from user_assistant.console.console import Console
 import keyboard
 import pyperclip
 
-def write(text):
-    pyperclip.copy(text)  
+def write(old_value):
+    print(f'Change old {old_value} :', end='')
+    pyperclip.copy(old_value) 
     pyperclip.paste()
+    keyboard.press('ctrl+v') 
+    keyboard.release('ctrl+v')
+    result = input()
+    pyperclip.copy('')
+    return result
 
 
 def input_value(value: str, class_field: classmethod, is_edit=False, old_value = None, placeholder=None):
     while True:
         if old_value:
-            print(f'Change old {value} :', end='')
-            write(old_value)
-            keyboard.press('ctrl+v') 
-            keyboard.release('ctrl+v')
-            result = input()
-            pyperclip.copy('')
+            result = write(old_value)
+                       
         else:    
             result = Console.input(f'Enter {value}: ', placeholder=placeholder).strip()
         if result == '' and is_edit:
