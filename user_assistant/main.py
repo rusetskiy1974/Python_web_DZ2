@@ -121,11 +121,11 @@ def main():
             remove_note(notes, notes_storage)
             continue
 
-        if user_input == COMMANDS.SEARCH_BY_TAG:
+        if user_input == COMMANDS.SEARCH_NOTES_BY_TAG:
             search_notes_by_tag(notes)
             continue
 
-        if user_input == COMMANDS.SEARCH_BY_AUTHOR:
+        if user_input == COMMANDS.SEARCH_NOTES_BY_AUTHOR:
             search_notes_by_author(notes)
             continue
 
