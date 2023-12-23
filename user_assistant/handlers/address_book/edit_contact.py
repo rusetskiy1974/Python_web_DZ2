@@ -28,8 +28,17 @@ def edit_contact(book: AddressBook, storage: Type[Storage]):
         return Console.print_error('Input existing name')
 
     for field in FIELDS_CLASS.keys():
+            if field ==  'name':
+                old_value = str(record.name)
+            elif field == 'birthday':
+                old_value = str(record.birthday)
+            elif field == 'email':
+                old_value = str(record.mail)
+            elif field == 'address':
+                old_value = str(record.address)       
+
             field_class, placeholder = FIELDS_CLASS[field]
-            volume = input_value(f'new {field}', field_class, True, placeholder=placeholder)
+            volume = input_value(f'{field}', field_class, True, old_value=old_value, placeholder=placeholder)
             
             if field == 'birthday' and volume:
                 record.edit_birthday(volume)
