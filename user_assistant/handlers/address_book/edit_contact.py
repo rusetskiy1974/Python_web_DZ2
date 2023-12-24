@@ -17,16 +17,20 @@ FIELDS_CLASS = {'name': (Name, None), 'birthday': (Date, Date.DATE_FORMAT_EXAMPL
 def edit_contact(book: AddressBook, storage: Type[Storage]):
     Console.print_tip('Press “Enter” with empty value to skip')
 
-    name = Console.input('Enter contact name: ')
+    while True:
 
-    if not name:
-        return
+        name = Console.input('Enter contact name: ')
 
-    record = book.find(name)
+        if not name:
+            return
 
-    if record is None:
-        return Console.print_error('Input existing name')
+        record = book.find(name)
 
+        if record is None:
+            Console.print_error('Input existing name')
+        else:
+            break    
+     
     for field in FIELDS_CLASS.keys():
             if field ==  'name':
                 old_value = str(record.name)

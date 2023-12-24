@@ -12,7 +12,13 @@ from user_assistant.console.table_format.notes_table import note_titles, get_not
 
 
 def add_note(notes: Notes, storage: Type[Storage]):
-    author = input_value('author',Author)
+    Console.print_tip('Press “Enter” with empty value to skip')
+    while True:
+        author = input_value('author',Author, True)
+        if not author:
+            return
+        else:
+            break
     text = input_value('text',Text)
     tag = input_value('tag',Tag)
 

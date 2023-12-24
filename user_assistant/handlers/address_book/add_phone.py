@@ -10,8 +10,13 @@ from user_assistant.console.table_format.address_book_table import address_book_
 
 
 def add_phone(book: AddressBook, storage: Type[Storage]):
+    Console.print_tip('Press “Enter” with empty value to skip')
     while True:
-        name = input_value('contact name', Name)
+        name = input_value('contact name', Name, True)
+
+        if not name:
+            return
+        
         record = book.find(name.value)
         if record:
             break

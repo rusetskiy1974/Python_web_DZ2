@@ -14,11 +14,21 @@ from user_assistant.console.table_format.address_book_table import address_book_
 
 
 def add_contact(book: AddressBook, storage: Type[Storage]):
+    Console.print_tip('Press “Enter” with empty value to skip')
 
-    name = input_value('name', Name)
+    while True:
+        name = input_value('name', Name, True)
 
-    if book.find(name.value) is not None:
-        return Console.print_error(f'Contact {name.value} is already exist')
+        if not name:
+            return
+
+        if book.find(name.value) is not None:
+            return Console.print_error(f'Contact {name.value} is already exist')
+        else:
+            break    
+    
+
+    
 
     date = input_value('date birthday', Date, placeholder=Date.DATE_FORMAT_EXAMPLE)
     mail = input_value('email', Mail, placeholder=Mail.MAIL_FORMAT_EXAMPLE)
