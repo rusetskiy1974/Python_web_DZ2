@@ -12,13 +12,14 @@ def write(old_value, field):
     return result
 
 
-def input_value(value: str, class_field: classmethod, is_edit=False, old_value = None, placeholder=None):
+
+def input_value(value: str, class_field: classmethod, is_edit=False, old_value = None, placeholder=None, prompts = []):
     while True:
         if old_value:
             result = write(old_value, str(class_field.__name__).casefold())
               
         else:    
-            result = Console.input(f'Enter {value}: ', placeholder=placeholder).strip()
+            result = Console.input(f'Enter {value}: ',prompts = prompts, placeholder=placeholder).strip()
         if result == '' and is_edit:
             return result
         try:

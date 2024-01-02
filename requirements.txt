@@ -7,3 +7,5 @@ pyproject_hooks==1.0.0
 rich==13.7.0
 prompt_toolkit==3.0.43
 phonenumbers==8.13.27
+keyboard ==0.13.5
+pyperclip ==1.8.2
