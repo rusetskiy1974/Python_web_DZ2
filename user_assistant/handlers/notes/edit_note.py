@@ -15,8 +15,9 @@ NOTES_CLASS = {'author': Author, 'text': Text}
 def edit_note(notes: Notes, storage: Type[Storage]):
     Console.print_tip('Press “Enter” with empty value to skip')
 
+    prompts = list(el.id.value.casefold().strip() for el in  notes.data.values())
     while True:
-        value_id = input_value(f'note ID', str)
+        value_id = input_value(f'note ID', str, prompts=prompts)
         
         if value_id:
             existing_note = notes.find(value_id)

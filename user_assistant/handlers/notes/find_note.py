@@ -1,10 +1,13 @@
 from user_assistant.notes.notes import Notes
 from user_assistant.console.console import Console
+from user_assistant.handlers.input_value import input_value
 from user_assistant.console.table_format.notes_table import note_titles, get_notes_row
 
 
 def find_note(notes: Notes):
-    value = Console.input(f'Enter note id: ')
+    prompts = list(el.id.value.casefold().strip() for el in  notes.data.values())
+
+    value = input_value(f'note ID', str, prompts=prompts)
 
     result = notes.find(value)
     

@@ -9,6 +9,7 @@ from user_assistant.console.table_format.notes_table import note_titles, get_not
 
 
 def search_notes_by_author(notes: Notes):
-    author = input_value('author', Author)
+    prompts = list(el.author.value.casefold().strip() for el in  notes.data.values())
+    author = input_value('author', Author, prompts=prompts)
     result_notes = notes.search_by_author(author.value)
     Console.print_table(f"Notes found for tag: {author}", note_titles, list(map(get_notes_row,result_notes)))
