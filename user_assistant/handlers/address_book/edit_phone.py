@@ -11,9 +11,11 @@ from user_assistant.console.table_format.address_book_table import address_book_
 
 def edit_phone(book: AddressBook, storage: Type[Storage]):
     Console.print_tip('Press “Enter” with empty value to skip')
+    
+    prompts = list(el.name.value.casefold().strip() for el in  book.data.values())
     while True:
-        name = input_value('contact name', Name, True)
-
+        # name = input_value('contact name', Name, True)
+        name = input_value(value='contact name', class_field= Name, is_edit= True, prompts=prompts)
         if not name:
             return
         
@@ -23,10 +25,11 @@ def edit_phone(book: AddressBook, storage: Type[Storage]):
         else:
             Console.print_error('Input existing name')
     Console.print_table('Select contact phone', address_book_titles, [get_address_book_row(record)])
-    phone = input_value('phone', Phone, placeholder=Phone.PHONE_FORMAT_EXAMPLE)
+    prompts =list(phone.value for phone in record.phones)
+    phone = input_value('phone', Phone, placeholder=Phone.PHONE_FORMAT_EXAMPLE, prompts=prompts)
 
     if record.find_phone(phone):
-        new_phone = input_value('new phone', Phone, placeholder=Phone.PHONE_FORMAT_EXAMPLE)
+        new_phone = input_value('new phone', Phone, placeholder=Phone.PHONE_FORMAT_EXAMPLE, old_value=str(phone))
         record.edit_phone(str(phone), str(new_phone))
         storage.update(book.data.values()) 
         Console.print_table('Updated contact phone', address_book_titles, [get_address_book_row(record)])

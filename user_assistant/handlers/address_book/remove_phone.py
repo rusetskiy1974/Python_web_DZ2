@@ -10,10 +10,14 @@ from user_assistant.console.table_format.address_book_table import address_book_
 
 def remove_phone(book: AddressBook, storage: Type[Storage]):
     Console.print_tip('Press “Enter” with empty value to skip')
+    prompts = list(el.name.value.casefold().strip() for el in  book.data.values())
+   
     while True:
-        name = input_value('contact name', Name, True)
+        name = input_value(value='contact name', class_field= Name, is_edit= True, prompts=prompts)
+
         if not name:
             return
+        
         record = book.find(name.value)
         if record:
             break
@@ -21,7 +25,8 @@ def remove_phone(book: AddressBook, storage: Type[Storage]):
             Console.print_error('Input existing name')
             
     Console.print_table('Select contact phone', address_book_titles, [get_address_book_row(record)])
-    phone = input_value('phone', Phone, placeholder=Phone.PHONE_FORMAT_EXAMPLE)
+    prompts =list(phone.value for phone in record.phones)
+    phone = input_value('phone', Phone, placeholder=Phone.PHONE_FORMAT_EXAMPLE, prompts=prompts)
 
     if record.find_phone(phone):
         record.remove_phone(phone)

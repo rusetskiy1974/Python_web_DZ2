@@ -10,10 +10,14 @@ from user_assistant.console.table_format.address_book_table import address_book_
 
 def remove_contact(book: AddressBook, storage: Type[Storage]):
     Console.print_tip('Press “Enter” with empty value to skip')
+    prompts = list(el.name.value.casefold().strip() for el in  book.data.values())
+   
     while True:
-        name = input_value('name', Name, True)
+        name = input_value(value='contact name', class_field= Name, is_edit= True, prompts=prompts)
+
         if not name:
             return
+        
         record = book.find(name.value)
         
         if record is None:
