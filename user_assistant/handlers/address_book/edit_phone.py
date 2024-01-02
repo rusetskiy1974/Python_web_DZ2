@@ -14,7 +14,6 @@ def edit_phone(book: AddressBook, storage: Type[Storage]):
     
     prompts = list(el.name.value.casefold().strip() for el in  book.data.values())
     while True:
-        # name = input_value('contact name', Name, True)
         name = input_value(value='contact name', class_field= Name, is_edit= True, prompts=prompts)
         if not name:
             return
