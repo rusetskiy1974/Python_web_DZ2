@@ -103,8 +103,7 @@ def main():
 
         if user_input in (COMMANDS.EXIT, COMMANDS.CLOSE):
             do_exit()
-            break
-
+            
         if user_input == COMMANDS.ADD_NOTE:
             add_note(notes, notes_storage)
             continue
