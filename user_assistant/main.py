@@ -49,6 +49,44 @@ notes = Notes(notes_storage.get())
 
 prompts = list(map(lambda name: getattr(COMMANDS, name), filter(lambda name: not name.startswith('__'), dir(COMMANDS))))
 
+choice = dict({
+    'add_contact': [add_contact, [book, address_book_storage]],
+    # 'remove_contact': remove_contact(book, address_book_storage),
+    # 'edit_contact': remove_contact(book, address_book_storage),
+    # 'find_contact': find_contact(book),
+    # 'show_birthday': show_birthday(book),
+    # 'show_all_contacts': show_all_contacts(book),
+    # 'search_contacts': search_contacts(book),
+    # 'add_phone': add_phone(book, address_book_storage),
+    # 'edit_phone': edit_phone(book, address_book_storage),
+    # 'remove_phone': remove_phone(book, address_book_storage),
+
+    # 'add_note': add_note(notes, notes_storage),
+    # 'find_note': find_note(notes),
+    # 'show_all_notes': show_all_notes(notes),
+    # 'remove_note': remove_note(notes, notes_storage),
+
+    # 'search_notes_by_tag': sort_notes_by_tags(notes),
+    # 'search_notes_by_author': search_notes_by_author(notes),
+    # 'edit_note': edit_note(notes, notes_storage),
+    # 'sort_notes_by_tags': sort_notes_by_tags(notes),
+    # 'sort_notes_by_author': sort_notes_by_author(notes),
+    # 'remove_tags': remove_tags(notes, notes_storage),
+    # 'add_tags': add_tags(notes, notes_storage),
+
+    # 'sort_files': sort_files(),
+
+    # 'help': help(),
+
+    # 'exit': do_exit(),
+    # 'close': do_exit()
+})
+
+class HandlerFactory:
+    @staticmethod
+    def create(action):
+        return choice[action][0](choice[action][1][0], choice[action][1][1])
+        
 
 def main():
     greeting()
@@ -56,101 +94,106 @@ def main():
     while True:
 
         user_input = Console.input('Enter command: ', prompts).casefold().strip()
+        if user_input in choice:
+            HandlerFactory.create(user_input)
+        else:
+            Console.print_tip('Enter [bold deep_sky_blue1]help[/] to see all possible commands')
+            continue    
 
-        if user_input == COMMANDS.ADD_CONTACT:
-            add_contact(book, address_book_storage)
-            continue
+        # if user_input == COMMANDS.ADD_CONTACT:
+        #     add_contact(book, address_book_storage)
+        #     continue
 
-        if user_input == COMMANDS.REMOVE_CONTACT:
-            remove_contact(book, address_book_storage)
-            continue
+        # if user_input == COMMANDS.REMOVE_CONTACT:
+        #     remove_contact(book, address_book_storage)
+        #     continue
 
-        if user_input == COMMANDS.EDIT_CONTACT:
-            edit_contact(book, address_book_storage)
-            continue
+        # if user_input == COMMANDS.EDIT_CONTACT:
+        #     edit_contact(book, address_book_storage)
+        #     continue
 
-        if user_input == COMMANDS.FIND_CONTACT:
-            find_contact(book)
-            continue
+        # if user_input == COMMANDS.FIND_CONTACT:
+        #     find_contact(book)
+        #     continue
 
-        if user_input == COMMANDS.SHOW_BIRTHDAY:
-            show_birthday(book)
-            continue
+        # if user_input == COMMANDS.SHOW_BIRTHDAY:
+        #     show_birthday(book)
+        #     continue
 
-        if user_input == COMMANDS.SHOW_ALL_CONTACTS:
-            show_all_contacts(book)
-            continue
+        # if user_input == COMMANDS.SHOW_ALL_CONTACTS:
+        #     show_all_contacts(book)
+        #     continue
 
-        if user_input == COMMANDS.SEARCH_CONTACTS:
-            search_contacts(book)
-            continue
+        # if user_input == COMMANDS.SEARCH_CONTACTS:
+        #     search_contacts(book)
+        #     continue
 
-        if user_input == COMMANDS.ADD_PHONE:
-            add_phone(book, address_book_storage)
-            continue
+        # if user_input == COMMANDS.ADD_PHONE:
+        #     add_phone(book, address_book_storage)
+        #     continue
 
-        if user_input == COMMANDS.EDIT_PHONE:
-            edit_phone(book, address_book_storage)
-            continue
+        # if user_input == COMMANDS.EDIT_PHONE:
+        #     edit_phone(book, address_book_storage)
+        #     continue
 
-        if user_input == COMMANDS.REMOVE_PHONE:
-            remove_phone(book, address_book_storage)
-            continue
+        # if user_input == COMMANDS.REMOVE_PHONE:
+        #     remove_phone(book, address_book_storage)
+        #     continue
 
-        if user_input == COMMANDS.SORT_FILES:
-            sort_files()
-            continue
+        # if user_input == COMMANDS.SORT_FILES:
+        #     sort_files()
+        #     continue
 
-        if user_input in (COMMANDS.EXIT, COMMANDS.CLOSE):
-            do_exit()
-            break
+        # if user_input in (COMMANDS.EXIT, COMMANDS.CLOSE):
+        #     do_exit()
+        #     break
 
-        if user_input == COMMANDS.ADD_NOTE:
-            add_note(notes, notes_storage)
-            continue
+        # if user_input == COMMANDS.ADD_NOTE:
+        #     add_note(notes, notes_storage)
+        #     continue
 
-        if user_input == COMMANDS.FIND_NOTE:
-            find_note(notes)
-            continue
+        # if user_input == COMMANDS.FIND_NOTE:
+        #     find_note(notes)
+        #     continue
 
-        if user_input == COMMANDS.SHOW_ALL_NOTES:
-            show_all_notes(notes)
-            continue
+        # if user_input == COMMANDS.SHOW_ALL_NOTES:
+        #     show_all_notes(notes)
+        #     continue
 
-        if user_input == COMMANDS.REMOVE_NOTE:
-            remove_note(notes, notes_storage)
-            continue
+        # if user_input == COMMANDS.REMOVE_NOTE:
+        #     remove_note(notes, notes_storage)
+        #     continue
 
-        if user_input == COMMANDS.SEARCH_NOTES_BY_TAG:
-            search_notes_by_tag(notes)
-            continue
+        # if user_input == COMMANDS.SEARCH_NOTES_BY_TAG:
+        #     search_notes_by_tag(notes)
+        #     continue
 
-        if user_input == COMMANDS.SEARCH_NOTES_BY_AUTHOR:
-            search_notes_by_author(notes)
-            continue
+        # if user_input == COMMANDS.SEARCH_NOTES_BY_AUTHOR:
+        #     search_notes_by_author(notes)
+        #     continue
 
-        if user_input == COMMANDS.EDIT_NOTE:
-            edit_note(notes, notes_storage)
-            continue
+        # if user_input == COMMANDS.EDIT_NOTE:
+        #     edit_note(notes, notes_storage)
+        #     continue
 
-        if user_input == COMMANDS.SORT_NOTES_BY_TAGS:
-            sort_notes_by_tags(notes)
-            continue
+        # if user_input == COMMANDS.SORT_NOTES_BY_TAGS:
+        #     sort_notes_by_tags(notes)
+        #     continue
 
-        if user_input == COMMANDS.SORT_NOTES_BY_AUTHOR:
-            sort_notes_by_author(notes)
-            continue
+        # if user_input == COMMANDS.SORT_NOTES_BY_AUTHOR:
+        #     sort_notes_by_author(notes)
+        #     continue
 
-        if user_input == COMMANDS.REMOVE_TAGS:
-            remove_tags(notes, notes_storage)
-            continue
+        # if user_input == COMMANDS.REMOVE_TAGS:
+        #     remove_tags(notes, notes_storage)
+        #     continue
 
-        if user_input == COMMANDS.ADD_TAGS:
-            add_tags(notes, notes_storage)
-            continue
+        # if user_input == COMMANDS.ADD_TAGS:
+        #     add_tags(notes, notes_storage)
+        #     continue
 
-        if user_input == COMMANDS.HELP:
-            help()
-            continue
+        # if user_input == COMMANDS.HELP:
+        #     help()
+        #     continue
 
-        Console.print_tip('Enter [bold deep_sky_blue1]help[/] to see all possible commands')
+        
