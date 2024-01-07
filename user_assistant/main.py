@@ -88,8 +88,7 @@ class ChoiceHandler:
             if len(self.choice[handler]) == 1:
                 return self.choice[handler][0]()
             if len(self.choice[handler][1]) > 1:
-                # return self.choice[handler][0](self.choice[handler][1][0], self.choice[handler][1][1]) 
-                return self.choice[handler][0](self.choice[handler][1])#[0], self.choice[handler][1][1]) 
+                return self.choice[handler][0](self.choice[handler][1][0], self.choice[handler][1][1]) 
             else:
                 return self.choice[handler][0](self.choice[handler][1][0])
         else:
