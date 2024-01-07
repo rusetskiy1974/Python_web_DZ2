@@ -29,17 +29,17 @@ def send_new_volume(record, field, volume, book):
 
 
 def find_old_value(record, field):
-    # if field ==  'name':
-    #     old_value = record.name
-    # elif field == 'birthday':
-    #     old_value = record.birthday
-    # elif field == 'email':
-    #     old_value = record.mail
-    # elif field == 'address':
-    #     old_value = record.address
-    # return str(old_value)
-    return record[field]
+    if field ==  'name':
+        old_value = record.name
+    elif field == 'birthday':
+        old_value = record.birthday
+    elif field == 'email':
+        old_value = record.mail
+    elif field == 'address':
+        old_value = record.address
+    return str(old_value)
 
+    
 def edit_contact(book: AddressBook, storage: Type[Storage]):
     Console.print_tip('Press “Enter” with empty value to skip')
 
