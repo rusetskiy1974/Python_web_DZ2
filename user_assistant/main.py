@@ -48,7 +48,7 @@ notes_storage = CSVStorage(STORAGE_PATH, 'notes.csv', NotesCSVSerializer, NOTE_F
 notes = Notes(notes_storage.get())
 
 choice ={
-        'add_contact': [add_contact, (book, address_book_storage)],
+        'add_contact': [add_contact, [book, address_book_storage]],
         'remove_contact': [remove_contact, [book, address_book_storage]],
         'edit_contact': [edit_contact, [book, address_book_storage]],
         'find_contact': [find_contact,[book]],
