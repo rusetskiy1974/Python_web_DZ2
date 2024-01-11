@@ -8,4 +8,6 @@ EXPOSE 5000
 
 RUN pip install -r requirements.txt
 
-CMD   ["python", "main.py"]
+VOLUME /storage
+
+ENTRYPOINT   ["python", "main.py"]
