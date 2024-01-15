@@ -1,0 +1,25 @@
+[tool.poetry]
+name = "user-assistant"
+version = "0.1.0"
+description = ""
+authors = ["SergRusetskiy1974 <113336060+rusetskiy1974@users.noreply.github.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.11"
+build = "1.0.3"
+markdown-it-py = "3.0.0"
+mdurl = "0.1.2"
+packaging = "23.2"
+pygments = "2.17.2"
+pyproject-hooks = "1.0.0"
+rich = "13.7.0"
+prompt-toolkit = "3.0.43"
+phonenumbers = "8.13.27"
+keyboard = "0.13.5"
+pyperclip = "1.8.2"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
